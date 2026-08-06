@@ -1,0 +1,9 @@
+# Secrets — never commit
+.env
+.env.*
+
+# Dependencies
+node_modules/
+
+# Local working notes (not part of the kit)
+wayfinder-map-draft.md
