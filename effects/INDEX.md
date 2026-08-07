@@ -10,6 +10,7 @@ Pick by USE WHEN, then read only the chosen file.
 - **ink-bleed.tsx** — Content that bleeds in or out through an irregular, textured edge instead of a fade or rectangular wipe. Route transitions, section reveals, image swaps.
 - **magic-card.tsx** — Card with a cursor-following spotlight glow. Premium feature or pricing highlights.
 - **marquee.tsx** — Infinite horizontal scroll of logos or testimonials. Social proof strips.
+- **morph-gallery.tsx** — A thumbnail grid where clicking an item morphs it into its detail view while the surrounding grid yields and scatters out of the way. Portfolio galleries, case-study grids, product lightboxes.
 - **proximity-field.tsx** — A grid of glyphs, dots, or image tiles that magnetically displaces around the cursor with distance falloff. Interactive type walls, hero backdrops, gallery teasers.
 - **text-animate.tsx** — Per-word or per-character text reveal on scroll or mount. Hero headlines.
 - **velocity-type.tsx** — Display type that reacts to how fast the user scrolls — skewing, stretching, or driving a direction-aware marquee — and springs back at rest. Editorial heroes, section dividers.
