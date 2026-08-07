@@ -3,7 +3,7 @@
  * USE WHEN: A focused sign-in page — one centered card with email/password, a Google
  *           OAuth button, and a social-proof avatar row beneath the card.
  * INDUSTRY FIT: all. AVOID FOR: -
- * PAIRS WITH: /patterns/app/ shells (the post-login destination)
+ * PAIRS WITH: login-split-brand-panel.tsx (louder alternative), /patterns/app/ shells
  * DEPS: /primitives/button, /primitives/input, /primitives/label, /primitives/avatar,
  *       /primitives/separator, /lib/utils, lucide-react
  */

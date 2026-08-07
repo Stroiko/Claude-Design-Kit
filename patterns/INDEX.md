@@ -7,3 +7,4 @@ Pick by USE WHEN, then read only the chosen file.
 ### auth
 
 - **auth/login-centered-card.tsx** — A focused sign-in page — one centered card with email/password, a Google OAuth button, and a social-proof avatar row beneath the card.
+- **auth/login-split-brand-panel.tsx** — A sign-in page that sells a little — split card with a brand statement and social-proof avatars on the left, Google + email/password form on the right. Panel collapses on mobile, leaving just the form.
