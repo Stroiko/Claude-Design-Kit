@@ -11,3 +11,4 @@ Pick by USE WHEN, then read only the chosen file.
 - **marquee.tsx** — Infinite horizontal scroll of logos or testimonials. Social proof strips.
 - **proximity-field.tsx** — A grid of glyphs, dots, or image tiles that magnetically displaces around the cursor with distance falloff. Interactive type walls, hero backdrops, gallery teasers.
 - **text-animate.tsx** — Per-word or per-character text reveal on scroll or mount. Hero headlines.
+- **velocity-type.tsx** — Display type that reacts to how fast the user scrolls — skewing, stretching, or driving a direction-aware marquee — and springs back at rest. Editorial heroes, section dividers.
