@@ -13,6 +13,9 @@ A seventh direction, **Immersive** (`/industries/immersive/`), for artistic/expe
 
 - [Immersive DIRECTION.md + scaffold + router update](https://github.com/Stroiko/Claude-Design-Kit/issues/31) — cinematic stage-black + hot magenta, Unbounded/Sora, inverted motion budget under strict physics; router gains the seventh option + motion-modifier rule; three added (commit 4596687).
 
+- [Research: vanilla-three sourcing + technique patterns](https://github.com/Stroiko/Claude-Design-Kit/issues/30) — vendor stegu/webgl-noise + MIT Codrops only; GSAP skipped entirely (no redistribution grant); Lenis + rAF-scrub + scratch splitter; dispose/DPR/context guardrails verified.
+- [Immersive core sections](https://github.com/Stroiko/Claude-Design-Kit/issues/32) — 10 sections (two WebGL heroes, scrubbed story/gallery/type systems, gated cursor, honest preloader, Lenis provider), all guardrails held (commit 438b2cc).
+
 ## Not yet specified
 
 - Audio-reactive elements — revisit only if a user brings a concrete need via intake.
