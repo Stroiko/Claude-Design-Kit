@@ -9,4 +9,5 @@ Pick by USE WHEN, then read only the chosen file.
 - **bento-grid.tsx** — Feature showcase as an asymmetric card mosaic. The modern features section.
 - **magic-card.tsx** — Card with a cursor-following spotlight glow. Premium feature or pricing highlights.
 - **marquee.tsx** — Infinite horizontal scroll of logos or testimonials. Social proof strips.
+- **proximity-field.tsx** — A grid of glyphs, dots, or image tiles that magnetically displaces around the cursor with distance falloff. Interactive type walls, hero backdrops, gallery teasers.
 - **text-animate.tsx** — Per-word or per-character text reveal on scroll or mount. Hero headlines.
