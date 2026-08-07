@@ -1,69 +1,60 @@
 # Immersive Design Direction
 
-The aesthetic commitment for artistic, experience-first sites — album launches, festivals, creative campaigns, studios that want a *moment* instead of a page. Follow it exactly; do not blend with other industries. **This is the one direction where motion is the medium** — but choreographed motion, not decoration. It is still a website: it must load fast, degrade gracefully, and respect reduced-motion absolutely.
+The direction for artistic, experience-first sites — album launches, game reveals, festivals, creative campaigns, statement pieces. **This direction works differently from every other industry.** The six business industries each commit to ONE fixed look, because a restaurant wants the proven restaurant look. Immersive users want the opposite: singularity. So this direction has no house style. Instead it has a **protocol for inventing one** — and unbreakable **physics** underneath.
 
-## Personality
+Two immersive sites should never look alike. If your commitment for a game site could be pasted onto an album site unchanged, you have failed before writing a line of code.
 
-**Cinematic, singular, unhurried.** The site is a title sequence: one continuous mood, revealed in scenes as you scroll. Think interactive film credits — never a dashboard, never a template with confetti on top. When in doubt: fewer elements, bigger, slower.
+## PART 1 — THE COMMITMENT PROTOCOL
 
-## Typography
+Before designing anything, invent a bespoke aesthetic commitment **from the user's subject** — its world, era, material, temperature — and STATE it to the user in this shape:
 
-- **Display:** Unbounded (600, 800 — wide, spectacular). **Body:** Sora (400, 600).
-  ```css
-  @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Sora:wght@400;600&display=swap');
-  ```
-- Scale: 1.5 ratio, 16px base → 16 / 24 / 36 / 54 / 81 / 121. Yes, 121px — display type may fill the viewport; type IS imagery here.
-- Hero/scene titles: 81–121px desktop, Unbounded 800, tracking-tight, line-height 0.95, often broken deliberately across lines.
-- Body: 16–18px Sora, used sparingly — this direction speaks in headlines and images, max-w-prose when prose appears.
-- Labels: 12–13px Sora 600, uppercase, `tracking-[0.2em]`, muted — like film-credit captions.
-
-## Color
-
-Near-black stage, bone light, one hot signal:
-
-```css
-:root {
-  --background: oklch(0.11 0.005 300);       /* stage black, warm-violet cast */
-  --foreground: oklch(0.96 0.005 90);        /* bone */
-  --card: oklch(0.15 0.008 300);
-  --card-foreground: oklch(0.96 0.005 90);
-  --primary: oklch(0.62 0.26 350);           /* hot magenta — the signal */
-  --primary-foreground: oklch(0.11 0.005 300);
-  --secondary: oklch(0.2 0.01 300);
-  --secondary-foreground: oklch(0.96 0.005 90);
-  --muted: oklch(0.18 0.008 300);
-  --muted-foreground: oklch(0.62 0.01 300);
-  --accent: oklch(0.25 0.03 300);
-  --accent-foreground: oklch(0.96 0.005 90);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 14%);
-  --ring: oklch(0.62 0.26 350);
-  --radius: 0rem;
-}
+```
+MOOD: <three adjectives drawn from the subject — not "cinematic, singular, unhurried" every time>
+STAGE + SIGNAL: <the dominant field color and the ONE accent — pulled from the subject's world.
+  A scorched-earth RPG might be ash charcoal + ember orange. A reef documentary might be
+  abyss blue + bioluminescent green. Light stages are allowed; voids are not mandatory.>
+TYPE: <display + body — any Google Fonts pairing that serves the mood; state the import.
+  A brutal condensed face, an elegant serif, a mono — choose like a title designer would.>
+ATMOSPHERE: <ONE of: gradient, particles, terrain, key-art, wireframe — matched to the subject>
+MOTIF: <ONE recurring signature: custom cursor OR magnetic buttons OR a scroll-progress line...>
 ```
 
-Rules: the magenta signal appears in exactly two roles — the primary CTA and ONE recurring motif (a cursor glow, a scene accent, a scroll progress line; pick one per site). Shader/WebGL layers may run their own gradients but must stay in the violet-magenta-black family. NO rainbow palettes, NO neon-everything.
+Then declare the palette as the page's CSS variables (the same token block every industry uses — `--background`, `--foreground`, `--primary`, `--card`, `--muted`, `--border`, …) so every kit component, including the WebGL atmospheres, re-skins to it automatically. **Obey your commitment for the whole page exactly as strictly as other industries obey their fixed DIRECTION.** Coherence is the discipline; the choices are yours.
 
-## Motion budget (inverted — motion is the point, so the rules are stricter)
+What the protocol does NOT constrain: palette family, light vs dark, font personality, mood. What it does require: ONE stage + ONE signal (not five accents), ONE atmosphere, ONE motif, and a commitment stated before the first component is placed.
 
-- **Allowed and encouraged:** one WebGL atmosphere layer per page (shader gradient OR particle field — never both), scroll-scrubbed scene changes, pinned storytelling sections, split-text reveals on scene titles, a custom cursor OR magnetic buttons (not both), one page-load sequence under 2.5s.
-- **The physics:** scroll-driven animation is scrubbed (tied to scroll position), not triggered; eased motion 400–900ms; nothing loops except the atmosphere layer.
-- **Hard limits:** ONE WebGL canvas per page, `devicePixelRatio` capped at 2, render loop pauses when the canvas is offscreen, every three.js scene disposes fully on unmount.
-- **`prefers-reduced-motion` is absolute:** every animated component ships a designed static fallback (a styled gradient frame, the final text state) — not a blank hole. The site must be fully usable and beautiful with zero motion.
-- **Never:** scroll-jacking (native scroll position is sacred; smooth-scroll libraries only if section-anchor navigation still works), autoplaying audio, cursor trails, more than one simultaneous attention-demanding animation.
+## PART 2 — THE PHYSICS (non-negotiable, identical for every commitment)
 
-## Imagery
+### Motion grammar
 
-Procedural first: shader gradients, particle fields, generative grain — the kit ships no binary assets. Photography, when the user provides it, is treated cinematically: full-bleed, darkened, one image per scene. No stock anything.
+- Scroll-driven animation is **scrubbed** (tied to scroll position), not triggered; eased motion 400–900ms; nothing loops except the atmosphere layer.
+- At most one attention-demanding animation per viewport at a time.
+- **Never:** scroll-jacking (native scroll position is sacred; smooth-scroll only if anchor navigation still works), autoplaying audio, cursor trails, fake loading screens longer than real loading.
 
-## Anti-patterns
+### WebGL limits
 
-Never: template-with-confetti (a normal landing page plus floating shapes), rainbow gradient meshes, three competing animations in one viewport, WebGL for its own sake on content sections, tiny body text over busy shaders, infinite tunnel scrolling with no destination, fake loading screens longer than real loading.
+- **ONE WebGL canvas per page.** `devicePixelRatio` capped at 2 via manual buffer sizing. Render loop pauses when the canvas is offscreen (IntersectionObserver). Every scene disposes fully on unmount (geometries, materials, textures, `renderer.dispose()`, `forceContextLoss()`).
+- Atmosphere colors come from the page's CSS variables (the commitment's token block) — components read them at mount; never hard-code a palette into a scene.
+
+### Accessibility & degradation
+
+- **`prefers-reduced-motion` is absolute:** every animated component ships a designed static fallback (a styled frame, the final text state) — never a blank hole. The site must be fully usable and beautiful with zero motion.
+- Type is HTML over the canvas, never rendered inside WebGL — selectable, accessible, indexable.
+- Text stays readable over atmospheres: scrim or contrast-check anything that sits on a live layer.
+- Global `/DESIGN-PRINCIPLES.md` applies in full (contrast, focus states, labels, alt text).
+
+### Imagery
+
+- The kit ships no binary assets: atmospheres are procedural. User-provided art (key art, photography) is welcome and treated cinematically — full-bleed, one image per scene, via the key-art atmosphere or `image-scene`.
+
+## Anti-patterns (quality floor, not taste rules)
+
+Never: a template-with-confetti (a normal landing page plus floating shapes), three competing animations in one viewport, tiny body text over busy shaders, WebGL on content sections (the one canvas is the atmosphere), identical commitments for different subjects, defaulting to dark-void-plus-purple because no one decided otherwise — *that is the absence of a commitment, not a commitment.*
 
 ## Section order
 
-preloader (optional, honest) → webgl hero (scene title over atmosphere) → scroll story (2–4 pinned scenes) → horizontal gallery or type wall → manifesto/big-type statement → credits/contact (film-credit style) → minimal footer. A page needs at least: hero, one scrolling scene, contact.
+preloader (optional, honest) → atmosphere hero (scene title over the chosen atmosphere) → scroll story (2–4 pinned scenes) → horizontal gallery or type wall → manifesto/big-type statement → credits/contact → minimal footer. A page needs at least: hero, one scrolling scene, contact.
 
-## Engineering rules (specific to this direction)
+## Engineering rules
 
-Three.js scenes live in thin React mounts: `useRef` for the container, `useEffect` for scene lifecycle with full disposal on cleanup — vanilla three.js code, NOT react-three-fiber (the consuming environment renders vanilla three reliably; R3F fragilely). All shader code inline in the component file (self-contained for RAG retrieval). IntersectionObserver pauses rendering offscreen. Type is HTML over the canvas, never rendered inside WebGL — it must stay selectable and accessible.
+Three.js scenes live in thin React mounts: `useRef` for the container, `useEffect` for scene lifecycle with full disposal on cleanup — vanilla three.js code, NOT react-three-fiber (the consuming environment renders vanilla three reliably; R3F fragilely). All shader code inline in the component file (self-contained for retrieval). See any `webgl-hero-*.tsx` for the canonical mount/dispose/fallback pattern.

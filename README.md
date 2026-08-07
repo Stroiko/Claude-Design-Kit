@@ -37,7 +37,7 @@ You are reading a curated component kit. First decide which mode the request is:
 | E-commerce | `/industries/ecommerce/` | Online stores, product catalogs, checkout flows |
 | Local Service | `/industries/local-service/` | Plumbers, dentists, gyms, salons, contractors, clinics |
 | Agency | `/industries/agency/` | Marketing agencies, studios, consultancies, service firms |
-| Immersive | `/industries/immersive/` | Artistic experience-first sites: album launches, festivals, creative campaigns, statement pieces. Motion-as-medium, WebGL atmosphere |
+| Immersive | `/industries/immersive/` | Artistic experience-first sites: album launches, game reveals, festivals, creative campaigns. No house style — its DIRECTION.md makes you INVENT a bespoke look per project (palette, fonts, atmosphere) under fixed motion physics |
 
 If the user's industry isn't listed, use the closest match above and say so, or fall back to `/primitives/` + `/components/` with `/DESIGN-PRINCIPLES.md`.
 
@@ -73,7 +73,7 @@ Each industry is an aesthetic commitment ([`DIRECTION.md`](industries/)) that it
 | **E-commerce** | clean, tactile, product-first | warm neutral, forest green only on buy actions |
 | **Local Service** | dependable, plainspoken | navy & amber, phone-first, zero motion |
 | **Agency** | expressive, confident, loud | bone & ink, electric cobalt, Syne |
-| **Immersive** | cinematic, singular | stage black, hot magenta, live WebGL, scroll-scrubbed scenes |
+| **Immersive** | invented per project | no house style — a bespoke palette/type/atmosphere committed per subject, live WebGL, scroll-scrubbed scenes |
 
 ### 60-second quickstart
 
