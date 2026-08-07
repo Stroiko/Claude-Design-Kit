@@ -12,12 +12,26 @@ Before designing anything, invent a bespoke aesthetic commitment **from the user
 
 State your FIRST instinct for this subject in one line — then discard it. The first idea is almost always a model default (dark void + one neon; ink-on-paper + vermilion; synthwave grid), and defaults are what make two different projects look alike. Your commitment must beat your first idea, not be it.
 
-### Step 2 — Decide every axis explicitly
+### Step 2 — Pick an art direction from the menu, then decide every axis
 
-Choose a pole on EACH axis — no axis may be left to habit, and the full set must fit the subject:
+First pick ONE named art direction — the one the subject demands, never your default. These eight are deliberately far apart; committing to one forces real separation between projects:
+
+| Art direction | Feels like | Reach for it when |
+|---|---|---|
+| **Brutalist** | raw, oversized, unpolished-on-purpose, harsh contrast | underground music, streetwear, provocation |
+| **Baroque / maximalist** | ornament, drama, deep shadow, gold-on-dark, serifs with flourish | opera, luxury, gothic fantasy, the occult |
+| **Y2K / chrome** | gradients-as-material, glossy chrome, bubble type, optimism | pop music, playful tech, nostalgia-forward brands |
+| **Editorial** | magazine restraint, columns, captions, ink on paper | documentaries, essays, photography-led subjects |
+| **Vaporwave / dreamcore** | washed pastels, haze, surreal staging, soft glow | ambient music, dreamlike games, retro-futures |
+| **Swiss / international** | grid discipline, giant Helvetica-class type, primary accents | festivals, exhibitions, anything typographic |
+| **Hand-drawn / analog** | irregular marks, paper texture feel, human warmth | indie games, folk music, craft subjects |
+| **Cinematic** | full-bleed imagery, letterboxed calm, title-sequence type | films, prestige games, narrative-heavy launches |
+
+The menu is a floor, not a ceiling — blend or go beyond it if the subject truly demands, but "none of these fit" must be argued, not assumed. Then choose a pole on EACH axis — no axis may be left to habit, and the full set must embody the chosen art direction for THIS subject:
 
 ```
 FIRST INSTINCT (rejected): <one line — what you're deliberately not doing>
+ART DIRECTION: <one from the menu (or an argued alternative) + why the subject demands it>
 MOOD: <three adjectives drawn from the subject>
 VALUE: <light stage | dark stage | mid/tinted stage — voids are one option, not the default>
 TEMPERATURE: <warm | cold | clashing — and where the heat sits>
