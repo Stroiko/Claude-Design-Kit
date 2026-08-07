@@ -3,7 +3,7 @@
 This repo is a curated, industry-branched UI component kit meant to be read as grounding context. Decide the request's mode first:
 
 **Whole site:**
-1. If the user has stated an industry or site type, use it. Otherwise ASK: "What industry or type of website are you building? (SaaS, Restaurant, Portfolio, E-commerce, Local Service, Agency)"
+1. If the user has stated an industry or site type, use it. Otherwise ASK: "What industry or type of website are you building? (SaaS, Restaurant, Portfolio, E-commerce, Local Service, Agency — or Immersive, for an artistic experience-first site)"
 2. Read ONLY: `/DESIGN-PRINCIPLES.md`, `/industries/<industry>/` (DIRECTION.md + sections/), and `/primitives/` + `/components/` as imported.
 3. Follow that industry's `DIRECTION.md` exactly — fonts, palette, spacing, motion budget.
 4. Assemble pages from that industry's `sections/` files: adapt copy, preserve structure and styling.
@@ -12,7 +12,7 @@ This repo is a curated, industry-branched UI component kit meant to be read as g
 1. Pick from a catalog, don't browse: read the fitting `INDEX.md` (industry known → `/industries/<x>/sections/INDEX.md` first; otherwise `/patterns/INDEX.md` or `/components/INDEX.md`), choose by USE WHEN, read only the chosen file(s).
 2. Render under exactly one direction: the known industry's `DIRECTION.md` (stated or clearly inferable from user context; patterns are token-driven and re-skin automatically). Unlisted business → closest industry's DIRECTION, said out loud — never an invented style. Nothing known → ask, or neutral defaults + `/DESIGN-PRINCIPLES.md`.
 
-**Always:** never mix aesthetic directions between industries; industry sections stay siloed, while `/patterns/`, `/components/`, `/primitives/`, `/effects/` are usable anywhere under a single palette.
+**Always:** never mix aesthetic directions between industries; industry sections stay siloed, while `/patterns/`, `/components/`, `/primitives/`, `/effects/` are usable anywhere under a single palette. Motion level comes from the industry's DIRECTION.md motion budget; a volunteered "more/less motion" scales within that budget, never past it — motion-as-the-point requests belong in `/industries/immersive/`.
 
 **Adding components** ("add this to the kit"): follow the recipe in `/CONTRIBUTING.md` — placement, re-token to the CSS-variable system, the USE WHEN header, MIT license check into CREDITS.md, then `npm run index && npm run typecheck`.
 

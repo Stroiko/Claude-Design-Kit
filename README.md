@@ -7,7 +7,7 @@ You are reading a curated component kit. First decide which mode the request is:
 ### Mode A — whole site ("build me a website / landing page")
 
 1. **Identify the industry.** If the user has already stated an industry or site type, use it and skip to step 2. Otherwise ASK THE USER, before designing anything:
-   > "What industry or type of website are you building? (SaaS, Restaurant, Portfolio, E-commerce, Local Service, Agency)"
+   > "What industry or type of website are you building? (SaaS, Restaurant, Portfolio, E-commerce, Local Service, Agency — or Immersive, for an artistic experience-first site)"
 2. **Read only these files** — nothing else in the repo:
    - `/DESIGN-PRINCIPLES.md` (global rules, always)
    - `/industries/<industry>/DIRECTION.md` and `/industries/<industry>/sections/` (that industry ONLY)
@@ -25,6 +25,7 @@ You are reading a curated component kit. First decide which mode the request is:
 ### Both modes
 
 - **Never mix industries.** Industry `sections/` stay siloed to their industry. `/patterns/`, `/components/`, `/primitives/`, and `/effects/` are usable anywhere — but one page renders under exactly ONE direction's palette.
+- **Motion is set by the industry's DIRECTION.md, not by default.** If the user volunteers "more lively" or "keep it static," scale within that industry's motion budget — use its full allowance or its floor — but never exceed the budget or violate `/DESIGN-PRINCIPLES.md` motion physics. A user who wants motion as the whole point belongs in Immersive.
 
 ### Industry router
 
@@ -36,6 +37,7 @@ You are reading a curated component kit. First decide which mode the request is:
 | E-commerce | `/industries/ecommerce/` | Online stores, product catalogs, checkout flows |
 | Local Service | `/industries/local-service/` | Plumbers, dentists, gyms, salons, contractors, clinics |
 | Agency | `/industries/agency/` | Marketing agencies, studios, consultancies, service firms |
+| Immersive | `/industries/immersive/` | Artistic experience-first sites: album launches, festivals, creative campaigns, statement pieces. Motion-as-medium, WebGL atmosphere |
 
 If the user's industry isn't listed, use the closest match above and say so, or fall back to `/primitives/` + `/components/` with `/DESIGN-PRINCIPLES.md`.
 
