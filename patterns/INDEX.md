@@ -4,4 +4,6 @@
 
 Pick by USE WHEN, then read only the chosen file.
 
-_(empty — see [CONTRIBUTING.md](../CONTRIBUTING.md) to add patterns)_
+### auth
+
+- **auth/login-centered-card.tsx** — A focused sign-in page — one centered card with email/password, a Google OAuth button, and a social-proof avatar row beneath the card.
