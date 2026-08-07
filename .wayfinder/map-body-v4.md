@@ -14,6 +14,10 @@ The Immersive direction produces a *different* site for every project: DIRECTION
 - [Parameterize WebGL and section colors](https://github.com/Stroiko/Claude-Design-Kit/issues/38) — shader palettes from commitment tokens (oklch-safe resolution), fonts tokenized as --font-display/--font-body, reference page recast as one example commitment with a real declared token block (commit 580f194).
 - [Three new atmospheres](https://github.com/Stroiko/Claude-Design-Kit/issues/39) — terrain, key-art (user imagery, zero-context without an image), wireframe/starfield; five atmospheres total, all token-colored (commit 040df19).
 
+- [Gate first run FAILED](https://github.com/Stroiko/Claude-Design-Kit/issues/40) — outputs escaped magenta but converged on ink-paper-vermilion with identical composition; causes: Claude Design context bleed (KJ FLUX/ASHFALL fictions recurred from prior sessions), protocol without forced choices, single hero composition.
+- [Commitment protocol teeth](https://github.com/Stroiko/Claude-Design-Kit/issues/42) — reject-first-instinct step, forced axis choices, 3+-axis divergence from anything in context (commit 94e57fc).
+- [Hero composition variants](https://github.com/Stroiko/Claude-Design-Kit/issues/43) — all five heroes take bottom-left/centered/right-rail/top-editorial with matched scrims (commit 94e57fc).
+
 ## Not yet specified
 
 - Whether the Commitment Protocol pattern should extend to any other direction (it should NOT for the six business industries — their fixed looks are the product; revisit only if a user asks for a "brand-me-from-scratch" mode).
