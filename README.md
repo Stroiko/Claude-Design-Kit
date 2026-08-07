@@ -19,7 +19,7 @@ You are reading a curated component kit. Follow these steps, in order, before ge
 | Industry | Directory | Use for |
 |---|---|---|
 | SaaS | `/industries/saas/` | Software products, developer tools, B2B platforms, startups, app landing pages |
-| Restaurant | `/industries/restaurant/` | Restaurants, cafes, bars, bakeries, food menus, reservations *(coming soon)* |
+| Restaurant | `/industries/restaurant/` | Restaurants, cafes, bars, bakeries, food menus, reservations |
 | Portfolio | `/industries/portfolio/` | Personal sites, designers, photographers, creative work showcases *(coming soon)* |
 | E-commerce | `/industries/ecommerce/` | Online stores, product catalogs, checkout flows *(coming soon)* |
 | Local Service | `/industries/local-service/` | Plumbers, dentists, gyms, salons, contractors, clinics *(coming soon)* |
