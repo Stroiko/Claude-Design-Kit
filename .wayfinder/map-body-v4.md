@@ -18,6 +18,8 @@ The Immersive direction produces a *different* site for every project: DIRECTION
 - [Commitment protocol teeth](https://github.com/Stroiko/Claude-Design-Kit/issues/42) — reject-first-instinct step, forced axis choices, 3+-axis divergence from anything in context (commit 94e57fc).
 - [Hero composition variants](https://github.com/Stroiko/Claude-Design-Kit/issues/43) — all five heroes take bottom-left/centered/right-rail/top-editorial with matched scrims (commit 94e57fc).
 
+- [Commitment as embedded artifact](https://github.com/Stroiko/Claude-Design-Kit/issues/44) — advisor synthesis: two rejections with reasons required, whole block embedded above the page's token styles; protocol runs are output-verifiable and divergence is a mechanical diff (commit af381b7).
+
 ## Not yet specified
 
 - Whether the Commitment Protocol pattern should extend to any other direction (it should NOT for the six business industries — their fixed looks are the product; revisit only if a user asks for a "brand-me-from-scratch" mode).
