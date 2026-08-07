@@ -20,12 +20,12 @@ You are reading a curated component kit. Follow these steps, in order, before ge
 |---|---|---|
 | SaaS | `/industries/saas/` | Software products, developer tools, B2B platforms, startups, app landing pages |
 | Restaurant | `/industries/restaurant/` | Restaurants, cafes, bars, bakeries, food menus, reservations |
-| Portfolio | `/industries/portfolio/` | Personal sites, designers, photographers, creative work showcases *(coming soon)* |
-| E-commerce | `/industries/ecommerce/` | Online stores, product catalogs, checkout flows *(coming soon)* |
-| Local Service | `/industries/local-service/` | Plumbers, dentists, gyms, salons, contractors, clinics *(coming soon)* |
-| Agency | `/industries/agency/` | Marketing agencies, studios, consultancies, service firms *(coming soon)* |
+| Portfolio | `/industries/portfolio/` | Personal sites, designers, photographers, creative work showcases |
+| E-commerce | `/industries/ecommerce/` | Online stores, product catalogs, checkout flows |
+| Local Service | `/industries/local-service/` | Plumbers, dentists, gyms, salons, contractors, clinics |
+| Agency | `/industries/agency/` | Marketing agencies, studios, consultancies, service firms |
 
-If the user's industry is marked *coming soon* or isn't listed, use the closest match above and say so, or fall back to `/primitives/` + `/components/` with `/DESIGN-PRINCIPLES.md`.
+If the user's industry isn't listed, use the closest match above and say so, or fall back to `/primitives/` + `/components/` with `/DESIGN-PRINCIPLES.md`.
 
 ### Repo map
 
@@ -42,9 +42,15 @@ Every component file begins with a header comment (`USE WHEN / INDUSTRY FIT / PA
 
 An industry-aware UI component kit built to be **read by AI assistants**, not run as an app. Connect this repo to [Claude Design](https://claude.ai) (or open it in Claude Code) and ask for a website; Claude asks what industry you're in and assembles a page from that industry's pre-styled sections — so a SaaS site and a restaurant site come out looking like they were designed by different studios, on purpose.
 
-Quickstart: connect the repo → prompt "build me a landing page" → answer the industry question. That's it.
+**60-second quickstart**
 
-Full docs, credits, and contribution notes are being built out — see the issue tracker for the roadmap.
+1. In Claude Design, link this repo (`Stroiko/Claude-Design-Kit`, branch `main`) as project context. In Claude Code, just open the repo — `CLAUDE.md` loads automatically.
+2. Prompt: `build me a landing page` (or name your industry up front: `...for my restaurant`).
+3. Answer the industry question if asked. Claude assembles from that industry's sections, in that industry's committed style.
+
+**What's inside:** six industries (SaaS, Restaurant, Portfolio, E-commerce, Local Service, Agency), each with a `DIRECTION.md` aesthetic commitment, 13–17 page sections, and a fully assembled `reference-page.tsx`; plus shared primitives (shadcn/ui), effects (Magic UI), and functional components. Every file opens with a `USE WHEN` header so the AI picks well. `npm install && npm run typecheck` verifies the kit compiles — there is deliberately no app to run.
+
+**Contributing:** keep the budget (~150 files; 20–30 sections per industry max), follow `DESIGN-PRINCIPLES.md` and the target industry's `DIRECTION.md`, give every file the header block, vendor only MIT-licensed sources and record them in [CREDITS.md](CREDITS.md), and make sure `tsc --noEmit` passes. The build history lives in the [issue tracker](https://github.com/Stroiko/Claude-Design-Kit/issues/1).
 
 ---
 

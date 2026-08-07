@@ -34,6 +34,16 @@ Claude-Design-Kit fully built: router README, DESIGN-PRINCIPLES.md, /primitives/
 - [Portfolio remaining sections + reference page](https://github.com/Stroiko/Claude-Design-Kit/issues/16) — 13 total sections + Anna Reyes reference page with inline minimal header (commit 4fd6278).
 - [Ecommerce remaining sections + reference page](https://github.com/Stroiko/Claude-Design-Kit/issues/18) — 13 total sections + Aldercrest storefront reference page, prices consistent kit-wide (commit pending push).
 
+- [Local-service direction + core sections](https://github.com/Stroiko/Claude-Design-Kit/issues/19) — navy + amber utility, zero motion, phone-first; 9 Harbor Plumbing sections (commit 4ae7e84).
+- [Agency direction + core sections](https://github.com/Stroiko/Claude-Design-Kit/issues/21) — bone + ink + cobalt, Syne over Manrope, two-effect budget; 9 Loud Neighbor sections (commit 2f2056d).
+
+- [Local-service remaining sections + reference page](https://github.com/Stroiko/Claude-Design-Kit/issues/20) — 13 total sections + Harbor Plumbing reference page, one phone constant threaded throughout (commit c4204f8).
+
+- [Agency remaining sections + reference page](https://github.com/Stroiko/Claude-Design-Kit/issues/22) — 13 total sections + Loud Neighbor reference page (commit 364a942).
+- [Final polish](https://github.com/Stroiko/Claude-Design-Kit/issues/23) — router table finalized (no coming-soon), human README with 60-second quickstart and contribution notes, CREDITS verified accurate, 151 tracked files on the ~150 budget.
+
+**The way is clear: all tickets closed, destination reached.** The kit is live at https://github.com/Stroiko/Claude-Design-Kit with six industries, verified grounding behavior (Phase 1 + Phase 2 gates passed in Claude Design), and a fully MIT-clean sourcing trail.
+
 ## Not yet specified
 
 - (all graduated into tickets as of the Phase 2 gate; per-industry /effects/ additions fold into each industry's tickets)
