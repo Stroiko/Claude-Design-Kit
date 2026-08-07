@@ -27,6 +27,13 @@ Claude-Design-Kit fully built: router README, DESIGN-PRINCIPLES.md, /primitives/
 - [Restaurant remaining sections + reference page](https://github.com/Stroiko/Claude-Design-Kit/issues/13) — 15 total sections + Casa Olea reference page; Phase 2 build complete (commit 81b5f02).
 - [Phase 2 gate: contrast test](https://github.com/Stroiko/Claude-Design-Kit/issues/14) — PASSED: SaaS and Restaurant outputs unmistakably different, sections rendered faithfully, content adapted not parroted. Four remaining industries + polish graduated from fog.
 
+- [Portfolio direction + core sections](https://github.com/Stroiko/Claude-Design-Kit/issues/15) — stark monochrome, single Archivo family, radius zero, no accent color; 9 Anna Reyes sections (commit f882d84).
+
+- [Ecommerce direction + core sections](https://github.com/Stroiko/Claude-Design-Kit/issues/17) — warm neutral retail, Instrument Sans, green only for buy actions; 9 Aldercrest sections (commit 22a7f15).
+
+- [Portfolio remaining sections + reference page](https://github.com/Stroiko/Claude-Design-Kit/issues/16) — 13 total sections + Anna Reyes reference page with inline minimal header (commit 4fd6278).
+- [Ecommerce remaining sections + reference page](https://github.com/Stroiko/Claude-Design-Kit/issues/18) — 13 total sections + Aldercrest storefront reference page, prices consistent kit-wide (commit pending push).
+
 ## Not yet specified
 
 - (all graduated into tickets as of the Phase 2 gate; per-industry /effects/ additions fold into each industry's tickets)
