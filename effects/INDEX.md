@@ -8,6 +8,7 @@ Pick by USE WHEN, then read only the chosen file.
 - **animated-shiny-text.tsx** — A subtle shimmer sweep across a short line of text. Announcement pills, 'New' banners.
 - **axis-type.tsx** — Type whose letterforms themselves animate — weight, width, slant, optical size — via variable font axes, driven by hover, scroll, cursor proximity, or an ambient cycle. Display headlines, nav wordmarks.
 - **bento-grid.tsx** — Feature showcase as an asymmetric card mosaic. The modern features section.
+- **depth-stack.tsx** — A layered scene with real depth — the camera follows the cursor on desktop and device tilt on mobile. Hero scenes, cover art, atmospheric section backdrops.
 - **ink-bleed.tsx** — Content that bleeds in or out through an irregular, textured edge instead of a fade or rectangular wipe. Route transitions, section reveals, image swaps.
 - **magic-card.tsx** — Card with a cursor-following spotlight glow. Premium feature or pricing highlights.
 - **marquee.tsx** — Infinite horizontal scroll of logos or testimonials. Social proof strips.
