@@ -11,7 +11,8 @@ The kit serves à-la-carte requests as well as whole sites: generated INDEX.md c
 
 ## Decisions so far
 
-<!-- one line per closed ticket -->
+- [Catalog generator + repo-wide indexes](https://github.com/Stroiko/Claude-Design-Kit/issues/25) — `npm run index` harvests USE WHEN headers into generated INDEX.md catalogs (lint-gated, idempotent, dependency-free); all 121 components pass (commit c6874df).
+- [Router v2 + patterns scaffold + intake doc](https://github.com/Stroiko/Claude-Design-Kit/issues/26) — single-element mode via catalogs, one-palette-per-page mixing rule, /patterns/ tree, CONTRIBUTING.md intake recipe (commit 71c441a).
 
 ## Not yet specified
 
