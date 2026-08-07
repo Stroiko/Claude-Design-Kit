@@ -10,7 +10,9 @@ The Immersive direction produces a *different* site for every project: DIRECTION
 
 ## Decisions so far
 
-<!-- one line per closed ticket -->
+- [Rewrite Immersive DIRECTION](https://github.com/Stroiko/Claude-Design-Kit/issues/37) — Commitment Protocol (invent + state + obey, per subject) over unchanged binding physics; identical commitments for different briefs named as failure (commit 33cae85).
+- [Parameterize WebGL and section colors](https://github.com/Stroiko/Claude-Design-Kit/issues/38) — shader palettes from commitment tokens (oklch-safe resolution), fonts tokenized as --font-display/--font-body, reference page recast as one example commitment with a real declared token block (commit 580f194).
+- [Three new atmospheres](https://github.com/Stroiko/Claude-Design-Kit/issues/39) — terrain, key-art (user imagery, zero-context without an image), wireframe/starfield; five atmospheres total, all token-colored (commit 040df19).
 
 ## Not yet specified
 
