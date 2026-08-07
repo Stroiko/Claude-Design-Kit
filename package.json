@@ -5,7 +5,8 @@
   "description": "Industry-aware UI component kit, curated to be read by AI assistants (Claude Design / Claude Code) as grounding context.",
   "type": "module",
   "scripts": {
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "index": "node scripts/build-index.mjs"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
