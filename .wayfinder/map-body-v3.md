@@ -18,10 +18,14 @@ A seventh direction, **Immersive** (`/industries/immersive/`), for artistic/expe
 
 - [Immersive remaining sections + reference page](https://github.com/Stroiko/Claude-Design-Kit/issues/33) — 14 total sections + SIGNAL BLOOM reference page with documented composition rules (commit 857b2d0). Build complete; gate (#34) is the frontier.
 
+- [Gate: immersive test in Claude Design](https://github.com/Stroiko/Claude-Design-Kit/issues/34) — PASSED: WebGL hero renders live, scroll grammar scrubs correctly, direction held; Claude Design invented a new coherent fiction rather than parroting the reference.
+- [Close out v3 map](https://github.com/Stroiko/Claude-Design-Kit/issues/35) — WebGL stays confined to Immersive (other directions' motion budgets don't admit it; graduation to /effects/ only via a future intake + explicit budget amendment). Audio-reactive stays out until a concrete intake need.
+
+**The way is clear: all tickets closed, destination reached.** Seven directions live; the vanilla-three architecture is validated in Claude Design end to end.
+
 ## Not yet specified
 
-- Audio-reactive elements — revisit only if a user brings a concrete need via intake.
-- Whether any immersive moves should ALSO land as `/effects/` usable by other directions (e.g. a subtle shader gradient for agency heroes) — decide after the gate.
+- (none — future immersive additions arrive via intake)
 
 ## Out of scope
 
