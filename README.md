@@ -55,19 +55,44 @@ Every component file begins with a header comment (`USE WHEN / INDUSTRY FIT / PA
 
 ## For humans
 
-An industry-aware UI component kit built to be **read by AI assistants**, not run as an app. Connect this repo to [Claude Design](https://claude.ai) (or open it in Claude Code) and ask for a website; Claude asks what industry you're in and assembles a page from that industry's pre-styled sections — so a SaaS site and a restaurant site come out looking like they were designed by different studios, on purpose.
+**A component kit built to be read by AI, not run by you.** Connect this repo to [Claude Design](https://claude.ai) (or open it in Claude Code) and ask for a website. Claude asks one question — *what industry?* — and assembles your page from that industry's pre-styled sections, under that industry's committed fonts, palette, and motion rules. A SaaS site and a restaurant site come out looking like they were made by different studios. On purpose.
 
-**60-second quickstart**
+### Why this exists
 
-1. In Claude Design, link this repo (`Stroiko/Claude-Design-Kit`, branch `main`) as project context. In Claude Code, just open the repo — `CLAUDE.md` loads automatically.
-2. Prompt: `build me a landing page` (or name your industry up front: `...for my restaurant`).
-3. Answer the industry question if asked. Claude assembles from that industry's sections, in that industry's committed style.
+Ask an AI for a website and you usually get the same site everyone else gets: purple gradient, three icon cards, centered everything. The fix isn't better prompting — it's better grounding. This repo *is* that grounding: ~140 curated components, seven opinionated design directions, and instructions the AI actually follows. All of it is verified live — the industry question fires, the styles hold, and even WebGL renders in Claude Design's preview.
 
-Also works à la carte: ask for just an element or page (`I need a login page for my restaurant`) and Claude picks from the catalogs and renders it in your industry's style. To grow the kit, hand Claude any component — pasted code, a link, or a description — and say "add this to the kit"; the [CONTRIBUTING.md](CONTRIBUTING.md) recipe re-styles it into the token system so every industry can wear it.
+### The seven directions
 
-**What's inside:** six industries (SaaS, Restaurant, Portfolio, E-commerce, Local Service, Agency), each with a `DIRECTION.md` aesthetic commitment, 13–17 page sections, and a fully assembled `reference-page.tsx`; plus shared primitives (shadcn/ui), effects (Magic UI), and functional components. Every file opens with a `USE WHEN` header so the AI picks well. `npm install && npm run typecheck` verifies the kit compiles — there is deliberately no app to run.
+Each industry is an aesthetic commitment ([`DIRECTION.md`](industries/)) that its 13–17 sections obey — fonts, an exact palette, spacing rhythm, and a motion budget:
 
-**Contributing:** follow the intake recipe in [CONTRIBUTING.md](CONTRIBUTING.md) — placement, re-tokening, the header block, MIT-only sourcing into [CREDITS.md](CREDITS.md), then `npm run index && npm run typecheck`. Generated catalogs keep per-request reading small as the kit grows; keep 20–30 sections per industry max. The build history lives in the [issue tracker](https://github.com/Stroiko/Claude-Design-Kit/issues/1).
+| Direction | Personality | The look |
+|---|---|---|
+| **SaaS** | precise, technical, spacious | near-black, electric mint, Space Grotesk |
+| **Restaurant** | warm, editorial, appetite-first | cream & espresso, terracotta, Fraunces serifs |
+| **Portfolio** | stark, personal, work-first | pure monochrome, huge Archivo, radius zero |
+| **E-commerce** | clean, tactile, product-first | warm neutral, forest green only on buy actions |
+| **Local Service** | dependable, plainspoken | navy & amber, phone-first, zero motion |
+| **Agency** | expressive, confident, loud | bone & ink, electric cobalt, Syne |
+| **Immersive** | cinematic, singular | stage black, hot magenta, live WebGL, scroll-scrubbed scenes |
+
+### 60-second quickstart
+
+1. **Claude Design:** link this repo (`Stroiko/Claude-Design-Kit`, branch `main`) as project context. **Claude Code:** just open the repo — `CLAUDE.md` loads automatically.
+2. Prompt `build me a landing page` — or skip the question by saying it up front: `...for my restaurant`.
+3. That's it. Claude assembles from the kit and adapts the copy to your business.
+
+**À la carte too:** ask for just an element (`I need a login page for my restaurant`) and Claude picks from the generated catalogs and renders it in your industry's style — the components are token-driven, so any direction re-skins them automatically.
+
+### Growing the kit
+
+Hand Claude any component — pasted code, a link, or just a description — and say **"add this to the kit."** The [CONTRIBUTING.md](CONTRIBUTING.md) recipe re-styles it into the token system (so every industry can wear it), writes its `USE WHEN` header, checks the license, and catalogs it with `npm run index`. The catalogs are what let the kit grow indefinitely: the AI reads a one-line-per-component index to pick, then reads only the chosen file — per-request scope stays small no matter how large the library gets.
+
+### Under the hood
+
+- **Stack:** Tailwind CSS v4 + vendored shadcn/ui primitives (Radix behavior underneath), `motion` for effects, vanilla three.js for the Immersive direction. All styling is utility classes over CSS variables — visible in every file, which is exactly what makes it AI-legible and re-skinnable.
+- **Quality gates:** every component carries a `USE WHEN` header (linted by the index script), all color flows through tokens, accessibility rules live in [DESIGN-PRINCIPLES.md](DESIGN-PRINCIPLES.md), and `npm install && npm run typecheck` verifies the whole kit compiles. There is deliberately no app to run.
+- **Licensing:** MIT, with every vendored file ledgered in [CREDITS.md](CREDITS.md) (shadcn/ui, Magic UI, webgl-noise — all MIT-verified; sources that don't permit redistribution were re-implemented or skipped).
+- **Build history:** the kit was planned and built in public — three completed maps on the [issue tracker](https://github.com/Stroiko/Claude-Design-Kit/issues?q=label%3Awayfinder%3Amap) record every decision, from license research to the live-WebGL verification.
 
 ---
 
