@@ -16,6 +16,8 @@ A seventh direction, **Immersive** (`/industries/immersive/`), for artistic/expe
 - [Research: vanilla-three sourcing + technique patterns](https://github.com/Stroiko/Claude-Design-Kit/issues/30) — vendor stegu/webgl-noise + MIT Codrops only; GSAP skipped entirely (no redistribution grant); Lenis + rAF-scrub + scratch splitter; dispose/DPR/context guardrails verified.
 - [Immersive core sections](https://github.com/Stroiko/Claude-Design-Kit/issues/32) — 10 sections (two WebGL heroes, scrubbed story/gallery/type systems, gated cursor, honest preloader, Lenis provider), all guardrails held (commit 438b2cc).
 
+- [Immersive remaining sections + reference page](https://github.com/Stroiko/Claude-Design-Kit/issues/33) — 14 total sections + SIGNAL BLOOM reference page with documented composition rules (commit 857b2d0). Build complete; gate (#34) is the frontier.
+
 ## Not yet specified
 
 - Audio-reactive elements — revisit only if a user brings a concrete need via intake.
