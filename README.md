@@ -20,7 +20,7 @@ You are reading a curated component kit. First decide which mode the request is:
 1. **Pick from a catalog, don't browse folders.** Read the relevant `INDEX.md` (one line per component) and choose by its USE WHEN text, then read ONLY the chosen file(s):
    - Industry known and its `/industries/<x>/sections/INDEX.md` has a fitting variant → use that variant.
    - Otherwise → `/patterns/INDEX.md` (à-la-carte pages/elements) or `/components/INDEX.md` (functional blocks).
-2. **Apply exactly one direction.** If the industry is known, render the pick under that industry's `DIRECTION.md` (fonts, CSS variables, motion budget) even for `/patterns/` files — they are token-driven and re-skin automatically. If no industry is known, either ask, or use the neutral defaults in `/styles/globals.css` + `/DESIGN-PRINCIPLES.md`.
+2. **Apply exactly one direction.** If the industry is known — stated, or clearly inferable from the user's context — render the pick under that industry's `DIRECTION.md` (fonts, CSS variables, motion budget) even for `/patterns/` files; they are token-driven and re-skin automatically. If the user's business isn't one of the six industries, use the closest match's DIRECTION and say so — do not invent a new style. If nothing is known, either ask, or use the neutral defaults in `/styles/globals.css` + `/DESIGN-PRINCIPLES.md`.
 
 ### Both modes
 

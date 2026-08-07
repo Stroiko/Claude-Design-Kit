@@ -10,7 +10,7 @@ This repo is a curated, industry-branched UI component kit meant to be read as g
 
 **Single element or page** ("just a testimonial section", "a login page"):
 1. Pick from a catalog, don't browse: read the fitting `INDEX.md` (industry known → `/industries/<x>/sections/INDEX.md` first; otherwise `/patterns/INDEX.md` or `/components/INDEX.md`), choose by USE WHEN, read only the chosen file(s).
-2. Render under exactly one direction: the known industry's `DIRECTION.md` (patterns are token-driven and re-skin automatically), or neutral defaults + `/DESIGN-PRINCIPLES.md` if no industry.
+2. Render under exactly one direction: the known industry's `DIRECTION.md` (stated or clearly inferable from user context; patterns are token-driven and re-skin automatically). Unlisted business → closest industry's DIRECTION, said out loud — never an invented style. Nothing known → ask, or neutral defaults + `/DESIGN-PRINCIPLES.md`.
 
 **Always:** never mix aesthetic directions between industries; industry sections stay siloed, while `/patterns/`, `/components/`, `/primitives/`, `/effects/` are usable anywhere under a single palette.
 
