@@ -7,14 +7,11 @@
  * DIFFERENT commitment — copy the composition pattern and the commitment MECHANISM below,
  * never this page's colors or fonts.
  *
- * THE EXAMPLE COMMITMENT (declared in the <style> block inside the component):
- *   Subject: SIGNAL BLOOM — the new album by Vela Nox, recorded over one polar winter in a
- *            disused planetarium north of Tromsø, out October 2, 2026.
- *   MOOD: nocturnal, astronomical, patient
- *   STAGE + SIGNAL: stage black with a warm-violet cast + hot magenta (an aurora over a
- *            dark dome). Declared as the token block: --background, --primary, etc.
- *   TYPE: Unbounded (display) + Sora (body), via the Google Fonts import in the style block.
- *   ATMOSPHERE: gradient (slow aurora drift). MOTIF: the cursor glow.
+ * THE EXAMPLE COMMITMENT: SIGNAL BLOOM — the new album by Vela Nox, recorded over one
+ * polar winter in a disused planetarium north of Tromsø, out October 2, 2026. The full
+ * commitment — rejected candidates, chosen art direction, every axis — is written as the
+ * EMBEDDED ARTIFACT above COMMITMENT_CSS below; that comment-plus-token-block pair is the
+ * template every generated immersive page must carry.
  *
  * Composition rules this page demonstrates (all from ./DIRECTION.md physics):
  *   1. SmoothScrollProvider wraps the entire page once, at the root — easing over native
@@ -100,10 +97,29 @@ function SiteHeader() {
 /* ------------------------------------------------------------------ */
 
 /**
- * The example commitment, applied. Every immersive page declares its invented palette and
- * fonts exactly like this — a token block + font import — and every kit component
- * (including the WebGL atmosphere) re-skins to it automatically. THIS is what you replace
- * per project; the assembly below is what you keep.
+ * THE EMBEDDED COMMITMENT ARTIFACT (DIRECTION.md: "ship the commitment inside the
+ * artifact"). Every generated immersive page must carry a block like this, verbatim
+ * format, directly above its token style block — rejections included, so the protocol
+ * run is checkable in the output and diffable against other pages' commitments:
+ *
+ * FIRST INSTINCT (rejected): dark void + hot magenta "music site" — the default neon
+ *   attractor, a decoration choice rather than a decision about THIS record.
+ * RUNNER-UP (rejected): editorial ink-on-paper with a red seal — handsome, but it reads
+ *   as a book about the album, not the album; too quiet for a planetarium of sound.
+ * ART DIRECTION: cinematic — a record made under a dome of projected stars demands
+ *   title-sequence calm, full-bleed darkness, patient type.
+ * MOOD: nocturnal, astronomical, patient
+ * VALUE: dark stage (a planetarium at showtime, not a void by default)
+ * TEMPERATURE: cold field, one warm-violet cast; the heat lives only in the signal
+ * STAGE + SIGNAL: stage black with warm-violet cast + hot magenta (an aurora over a dome)
+ * TYPE CLASS: sans, techno-wide — Unbounded (display) + Sora (body)
+ * DENSITY: sparse and monumental
+ * HERO COMPOSITION: bottom-left
+ * ATMOSPHERE: gradient (slow aurora drift)
+ * MOTIF: the cursor glow
+ *
+ * The token block below is that commitment made executable. THIS PAIR — rationale
+ * comment + token block — is what you replace per project; the assembly is what you keep.
  */
 const COMMITMENT_CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Sora:wght@400;600&display=swap');

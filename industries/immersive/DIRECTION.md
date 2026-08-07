@@ -8,9 +8,9 @@ Two immersive sites should never look alike. If your commitment for a game site 
 
 Before designing anything, invent a bespoke aesthetic commitment **from the user's subject** — its world, era, material, temperature. The protocol has three mandatory steps; skipping any of them produces the convergent sameness this direction exists to prevent.
 
-### Step 1 — Name and reject the obvious
+### Step 1 — Name and reject the obvious, as artifacts
 
-State your FIRST instinct for this subject in one line — then discard it. The first idea is almost always a model default (dark void + one neon; ink-on-paper + vermilion; synthwave grid), and defaults are what make two different projects look alike. Your commitment must beat your first idea, not be it.
+State TWO candidates you considered and rejected — your first instinct and a serious runner-up — each with the reason it lost. These are not private deliberation: they are required lines of the commitment block, checkable in the output. One throwaway rejection is easy to token-gesture while sliding to your second-favorite default; two rejections with reasons force an actual walk through the space. The first idea is almost always a model default (dark void + one neon; ink-on-paper + vermilion; synthwave grid), and defaults are what make two different projects look alike. Your commitment must beat your first two ideas, not be them.
 
 ### Step 2 — Pick an art direction from the menu, then decide every axis
 
@@ -30,8 +30,9 @@ First pick ONE named art direction — the one the subject demands, never your d
 The menu is a floor, not a ceiling — blend or go beyond it if the subject truly demands, but "none of these fit" must be argued, not assumed. Then choose a pole on EACH axis — no axis may be left to habit, and the full set must embody the chosen art direction for THIS subject:
 
 ```
-FIRST INSTINCT (rejected): <one line — what you're deliberately not doing>
-ART DIRECTION: <one from the menu (or an argued alternative) + why the subject demands it>
+FIRST INSTINCT (rejected): <one line + why it's the default, not a decision>
+RUNNER-UP (rejected): <a second direction seriously considered + the reason it lost>
+ART DIRECTION: <the winner from the menu (or an argued alternative) + why the subject demands it>
 MOOD: <three adjectives drawn from the subject>
 VALUE: <light stage | dark stage | mid/tinted stage — voids are one option, not the default>
 TEMPERATURE: <warm | cold | clashing — and where the heat sits>
@@ -50,7 +51,9 @@ MOTIF: <ONE recurring signature: custom cursor OR magnetic buttons OR a scroll-p
 
 If ANY prior aesthetic is visible to you — an earlier project in this workspace, a previous version of this site, the SIGNAL BLOOM reference example, a design system attachment — your commitment must differ from it on at least three axes (value, temperature, type class, hero composition, atmosphere). Continuity is for revisions the user asked for; a NEW subject never inherits an old commitment. Two briefs producing the same stage color, type class, and composition is a failed protocol run, even if both pages are individually handsome.
 
-Then declare the palette as the page's CSS variables (the same token block every industry uses — `--background`, `--foreground`, `--primary`, `--card`, `--muted`, `--border`, `--font-display`, `--font-body`, …) so every kit component, including the WebGL atmospheres, re-skins to it automatically. **State the full commitment to the user, then obey it for the whole page exactly as strictly as other industries obey their fixed DIRECTION.** Coherence is the discipline; the choices are yours.
+Then declare the palette as the page's CSS variables (the same token block every industry uses — `--background`, `--foreground`, `--primary`, `--card`, `--muted`, `--border`, `--font-display`, `--font-body`, …) so every kit component, including the WebGL atmospheres, re-skins to it automatically.
+
+**Ship the commitment inside the artifact:** state it to the user, AND embed the entire commitment block — rejections included — as a comment directly above the page's token style block. The commitment is part of the output, not chat: anyone (human or AI) reading the page source can verify the rejections happened and what was chosen. This is also what makes Step 3 mechanical — a prior page's embedded commitment is right there to diff against. Then obey it for the whole page exactly as strictly as other industries obey their fixed DIRECTION. Coherence is the discipline; the choices are yours. (`reference-page.tsx` shows the embedded artifact worked in full.)
 
 ## PART 2 — THE PHYSICS (non-negotiable, identical for every commitment)
 
