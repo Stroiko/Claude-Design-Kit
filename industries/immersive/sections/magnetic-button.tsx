@@ -7,8 +7,8 @@
  * INDUSTRY FIT: immersive. AVOID FOR: every other industry (motion budgets forbid it).
  * PAIRS WITH: webgl-hero-particles.tsx, credits-contact.tsx, any immersive section CTA
  * DEPS: /primitives/button, /lib/utils
- * NOTE: Unbounded (display) and Sora (body) come from the Google Fonts @import declared in
- *       ../DIRECTION.md. Gated exactly like custom-cursor.tsx — pointer:fine + hover:hover
+ * NOTE: Display/body fonts come from the commitment tokens --font-display/--font-body
+ *       (each project declares its own fonts + Google Fonts import — see ../DIRECTION.md). Gated exactly like custom-cursor.tsx — pointer:fine + hover:hover
  *       + prefers-reduced-motion:no-preference, re-evaluated on change — and renders a
  *       plain Button otherwise. Focus states and keyboard activation are untouched.
  */

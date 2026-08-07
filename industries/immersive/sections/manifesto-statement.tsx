@@ -1,13 +1,13 @@
 /**
  * manifesto-statement.tsx
  * USE WHEN: The big-type statement scene near the end of the page — one long sentence where
- *           the emphasized words light up in magenta as scroll progress advances through the
+ *           the emphasized words light up in the signal color as scroll progress advances through the
  *           section (scrubbed, reversible). The page's editorial thesis in one breath.
  * INDUSTRY FIT: immersive. AVOID FOR: every other industry (motion budgets forbid it).
  * PAIRS WITH: scroll-story.tsx, type-wall.tsx, split-text-title.tsx
  * DEPS: /lib/utils
- * NOTE: Unbounded (display) and Sora (body) come from the Google Fonts @import declared in
- *       ../DIRECTION.md. Emphasized words render already lit (final state) — JS dims them
+ * NOTE: Display/body fonts come from the commitment tokens --font-display/--font-body
+ *       (each project declares its own fonts + Google Fonts import — see ../DIRECTION.md). Emphasized words render already lit (final state) — JS dims them
  *       only after the reduced-motion check, so static users always see the finished scene.
  */
 "use client"
@@ -22,7 +22,7 @@ export interface ManifestoStatementProps {
   /** One long sentence, 36–54px. This section is the whole thought — no paragraphs after. */
   sentence?: string
   /**
-   * Words to emphasize in magenta Unbounded, matched case-insensitively with punctuation
+   * Words to emphasize in signal-color display type, matched case-insensitively with punctuation
    * stripped. They light up in sentence order as progress advances.
    */
   emphasis?: string[]
@@ -122,16 +122,16 @@ export function ManifestoStatement({
   return (
     <section ref={sectionRef} className={cn("bg-background py-24 md:py-40", className)}>
       <div className="mx-auto max-w-5xl px-6 md:px-12">
-        <p className="font-[Sora] text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase">
+        <p className="font-(family-name:--font-body) text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase">
           {label}
         </p>
-        <p className="mt-10 font-[Sora] text-[24px] leading-[1.4] font-semibold text-foreground md:text-[36px] md:leading-[1.35] lg:text-[54px] lg:leading-[1.25]">
+        <p className="mt-10 font-(family-name:--font-body) text-[24px] leading-[1.4] font-semibold text-foreground md:text-[36px] md:leading-[1.35] lg:text-[54px] lg:leading-[1.25]">
           {words.map((word, index) => (
             <span key={`${word}-${index}`}>
               {isEmphasized(word) ? (
                 <span
                   data-emphasis-word=""
-                  className="font-[Unbounded] text-primary transition-colors duration-700"
+                  className="font-(family-name:--font-display) text-primary transition-colors duration-700"
                 >
                   {word}
                 </span>

@@ -1,12 +1,12 @@
 /**
  * type-wall.tsx
- * USE WHEN: A typographic theater interlude — 3–5 rows of huge Unbounded display text that
+ * USE WHEN: A typographic theater interlude — 3–5 rows of huge display text that
  *           shift subtly on X in opposing directions as the page scrolls. Type IS the
  *           imagery here; use instead of (not alongside) a horizontal gallery.
  * INDUSTRY FIT: immersive. AVOID FOR: every other industry (motion budgets forbid it).
  * PAIRS WITH: webgl-hero-particles.tsx, manifesto-statement.tsx, scroll-story.tsx
  * DEPS: /lib/utils
- * NOTE: Unbounded (display) comes from the Google Fonts @import declared in ../DIRECTION.md.
+ * NOTE: Display font comes from the commitment token --font-display (see ../DIRECTION.md).
  *       The scroll offset is scrubbed (rAF-lerped), nothing loops. Reduced motion keeps the
  *       staggered static composition — the offsets are designed in, JS only shifts them.
  */
@@ -103,7 +103,7 @@ export function TypeWall({ rows = DEFAULT_ROWS, className }: TypeWallProps) {
             rowRefs.current[index] = el
           }}
           className={cn(
-            "font-[Unbounded] text-[54px] leading-[0.95] font-extrabold tracking-tight whitespace-nowrap will-change-transform md:text-[81px] lg:text-[121px]",
+            "font-(family-name:--font-display) text-[54px] leading-[0.95] font-extrabold tracking-tight whitespace-nowrap will-change-transform md:text-[81px] lg:text-[121px]",
             STATIC_OFFSETS[index % STATIC_OFFSETS.length],
             // Every other row is outlined bone — texture without a second color.
             index % 2 === 1

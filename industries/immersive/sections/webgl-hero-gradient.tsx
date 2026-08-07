@@ -6,8 +6,10 @@
  * INDUSTRY FIT: immersive. AVOID FOR: every other industry (motion budgets forbid it).
  * PAIRS WITH: scroll-story.tsx, split-text-title.tsx, smooth-scroll-provider.tsx, preloader.tsx
  * DEPS: /primitives/button, /lib/utils, three
- * NOTE: Unbounded (display) and Sora (body) come from the Google Fonts @import declared in
- *       ../DIRECTION.md. Reduced motion / no WebGL renders the designed static gradient frame
+ * NOTE: All colors come from the page's Commitment Protocol tokens (--background/--accent/
+ *       --primary), read at mount and fed to the shader as uniforms — this atmosphere renders
+ *       in ANY committed palette. Fonts come from the commitment's --font-display/--font-body.
+ *       Reduced motion / no WebGL renders the designed static gradient frame (token-driven)
  *       that also serves as the pre-first-frame base layer — never a blank hole.
  */
 "use client"
@@ -109,6 +111,9 @@ precision highp float;
 
 uniform float uTime;
 uniform vec2 uResolution;
+uniform vec3 uStage;  // --background: the dominant field
+uniform vec3 uMid;    // --accent: the drift layer between stage and signal
+uniform vec3 uSignal; // --primary: the ONE accent, blooming sparsely
 varying vec2 vUv;
 
 ${SIMPLEX_NOISE_GLSL}
@@ -122,20 +127,12 @@ void main() {
   float n1 = snoise(vec3(p * 1.3, t));
   float n2 = snoise(vec3(p * 2.9 + 17.3, t * 1.7));
 
-  // DIRECTION.md palette, violet-magenta-black family only:
-  // stageBlack ~ --background (oklch 0.11, warm-violet cast)
-  // deepViolet ~ --accent territory (oklch 0.25 0.03 300)
-  // hotMagenta ~ --primary (oklch 0.62 0.26 350)
-  vec3 stageBlack = vec3(0.043, 0.035, 0.058);
-  vec3 deepViolet = vec3(0.16, 0.10, 0.24);
-  vec3 hotMagenta = vec3(0.83, 0.12, 0.47);
-
   float field = smoothstep(-0.7, 0.9, n1 + 0.35 * n2);
-  vec3 color = mix(stageBlack, deepViolet, field);
+  vec3 color = mix(uStage, uMid, field);
 
-  // The magenta signal blooms sparsely from the noise ridges, biased toward the top.
+  // The signal color blooms sparsely from the noise ridges, biased toward the top.
   float signal = smoothstep(0.55, 0.95, n1) * smoothstep(1.05, 0.15, vUv.y + n2 * 0.2);
-  color = mix(color, hotMagenta, signal * 0.5);
+  color = mix(color, uSignal, signal * 0.5);
 
   // Fine procedural grain keeps the gradient cinematic instead of banded.
   float grain = fract(sin(dot(gl_FragCoord.xy, vec2(12.9898, 78.233))) * 43758.5453);
@@ -145,14 +142,63 @@ void main() {
 }
 `
 
+/**
+ * Resolve any CSS color string (commitment tokens are oklch() strings) to a THREE.Color:
+ * a hidden probe element lets the browser resolve the syntax, read back via
+ * getComputedStyle as rgb(). Engines that serialize oklch() verbatim fall through to a
+ * 1x1 canvas pixel readback.
+ */
+function resolveCssColor(value: string, fallback: THREE.Color): THREE.Color {
+  const raw = value.trim()
+  if (!raw) return fallback.clone()
+  const probe = document.createElement("span")
+  probe.style.color = raw
+  probe.style.display = "none"
+  document.body.appendChild(probe)
+  const resolved = getComputedStyle(probe).color
+  document.body.removeChild(probe)
+  const rgb = resolved.match(/rgba?\(([^)]+)\)/)
+  if (rgb) {
+    const parts = rgb[1].split(/[\s,/]+/).map(Number)
+    if (parts.length >= 3 && parts.slice(0, 3).every((c) => !Number.isNaN(c))) {
+      return new THREE.Color(parts[0] / 255, parts[1] / 255, parts[2] / 255)
+    }
+  }
+  const canvas = document.createElement("canvas")
+  canvas.width = 1
+  canvas.height = 1
+  const ctx = canvas.getContext("2d")
+  if (!ctx) return fallback.clone()
+  ctx.fillStyle = raw
+  ctx.fillRect(0, 0, 1, 1)
+  const d = ctx.getImageData(0, 0, 1, 1).data
+  return new THREE.Color(d[0] / 255, d[1] / 255, d[2] / 255)
+}
+
+/** Read a commitment token off the mounted subtree (inherits scoped overrides too). */
+function readToken(
+  el: HTMLElement,
+  token: string,
+  override: string | undefined,
+  fallback: string
+): THREE.Color {
+  const fb = new THREE.Color(fallback)
+  if (override) return resolveCssColor(override, fb)
+  return resolveCssColor(getComputedStyle(el).getPropertyValue(token), fb)
+}
+
 export interface WebglHeroGradientProps {
   /** Small film-credit caption above the title. */
   label?: string
   /** Scene title, one array entry per deliberate line break. */
   titleLines?: string[]
-  /** Sora one-liner under the title. Omit to hide. */
+  /** Body-font one-liner under the title. Omit to hide. */
   subline?: string
   cta?: { label: string; href: string }
+  /** Override the commitment tokens (CSS color strings) if the atmosphere needs its own grade. */
+  stageColor?: string
+  midColor?: string
+  signalColor?: string
   className?: string
 }
 
@@ -161,6 +207,9 @@ export function WebglHeroGradient({
   titleLines = ["SIGNAL", "BLOOM"],
   subline = "Eleven tracks recorded in a disused planetarium. Out October 2.",
   cta = { label: "Pre-save the album", href: "#listen" },
+  stageColor,
+  midColor,
+  signalColor,
   className,
 }: WebglHeroGradientProps) {
   const mountRef = useRef<HTMLDivElement>(null)
@@ -189,6 +238,10 @@ export function WebglHeroGradient({
     const uniforms = {
       uTime: { value: 0 },
       uResolution: { value: new THREE.Vector2(1, 1) },
+      // The commitment's palette, resolved from the page tokens at mount.
+      uStage: { value: readToken(mount, "--background", stageColor, "#101014") },
+      uMid: { value: readToken(mount, "--accent", midColor, "#202028") },
+      uSignal: { value: readToken(mount, "--primary", signalColor, "#8a8a8f") },
     }
     const material = new THREE.ShaderMaterial({
       vertexShader: VERTEX_SHADER,
@@ -257,7 +310,7 @@ export function WebglHeroGradient({
       renderer.forceContextLoss()
       mount.removeChild(canvas)
     }
-  }, [])
+  }, [stageColor, midColor, signalColor])
 
   return (
     <section
@@ -283,10 +336,10 @@ export function WebglHeroGradient({
 
       {/* Type is HTML over the canvas — selectable, accessible, never rendered in WebGL. */}
       <div className="relative z-10 flex h-full flex-col justify-end px-6 pb-16 md:px-12 md:pb-20">
-        <p className="font-[Sora] text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase">
+        <p className="font-(family-name:--font-body) text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase">
           {label}
         </p>
-        <h1 className="mt-6 font-[Unbounded] text-[54px] leading-[0.95] font-extrabold tracking-tight text-foreground md:text-[81px] lg:text-[121px]">
+        <h1 className="mt-6 font-(family-name:--font-display) text-[54px] leading-[0.95] font-extrabold tracking-tight text-foreground md:text-[81px] lg:text-[121px]">
           {titleLines.map((line) => (
             <span key={line} className="block">
               {line}
@@ -294,7 +347,7 @@ export function WebglHeroGradient({
           ))}
         </h1>
         {subline ? (
-          <p className="mt-6 max-w-prose font-[Sora] text-base text-muted-foreground md:text-lg">
+          <p className="mt-6 max-w-prose font-(family-name:--font-body) text-base text-muted-foreground md:text-lg">
             {subline}
           </p>
         ) : null}

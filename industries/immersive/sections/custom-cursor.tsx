@@ -1,6 +1,6 @@
 /**
  * custom-cursor.tsx
- * USE WHEN: The site's ONE recurring magenta motif (per DIRECTION.md: cursor glow OR scene
+ * USE WHEN: The site's ONE recurring signal-color motif (per DIRECTION.md: cursor glow OR scene
  *           accent OR progress line — pick one per site). A lerped glow follows the pointer
  *           and scales up over links/buttons. Wrap the page once, near the root.
  * INDUSTRY FIT: immersive. AVOID FOR: every other industry (motion budgets forbid it).
@@ -114,7 +114,7 @@ export function CustomCursor({ children, className }: CustomCursorProps) {
           aria-hidden="true"
           className={cn("pointer-events-none fixed inset-0 z-[60]", className)}
         >
-          {/* Magenta glow — the recurring motif. Trails the pointer, swells over interactives. */}
+          {/* Signal-color glow — the recurring motif. Trails the pointer, swells over interactives. */}
           <div
             ref={glowRef}
             className="absolute top-0 left-0 size-10 rounded-full bg-primary/25 opacity-0 blur-md transition-opacity duration-300 will-change-transform"

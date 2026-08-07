@@ -6,7 +6,7 @@
  * INDUSTRY FIT: immersive. AVOID FOR: every other industry (motion budgets forbid it).
  * PAIRS WITH: scroll-story.tsx, manifesto-statement.tsx, webgl-hero-gradient.tsx
  * DEPS: /lib/utils
- * NOTE: Unbounded (display) comes from the Google Fonts @import declared in ../DIRECTION.md.
+ * NOTE: Display font comes from the commitment token --font-display (see ../DIRECTION.md).
  *       Reduced motion renders the final state immediately — the hidden state is only ever
  *       applied by JS after the motion preference check, so static users never see blank text.
  */
@@ -135,7 +135,7 @@ export function SplitTextTitle({
     {
       ref: rootRef,
       className: cn(
-        "font-[Unbounded] text-[36px] leading-[0.95] font-extrabold tracking-tight text-foreground md:text-[54px] lg:text-[81px]",
+        "font-(family-name:--font-display) text-[36px] leading-[0.95] font-extrabold tracking-tight text-foreground md:text-[54px] lg:text-[81px]",
         className
       ),
     },

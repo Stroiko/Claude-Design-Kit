@@ -6,14 +6,14 @@
  * INDUSTRY FIT: immersive. AVOID FOR: every other industry (motion budgets forbid it).
  * PAIRS WITH: credits-contact.tsx, manifesto-statement.tsx
  * DEPS: /lib/utils
- * NOTE: Unbounded (display) and Sora (body) come from the Google Fonts @import declared in
- *       ../DIRECTION.md. Bone and muted only — the magenta signal never appears down here
+ * NOTE: Display/body fonts come from the commitment tokens --font-display/--font-body
+ *       (each project declares its own fonts + Google Fonts import — see ../DIRECTION.md). Bone and muted only — the signal color never appears down here
  *       (DIRECTION.md two-role rule).
  */
 import { cn } from "@/lib/utils"
 
 export interface SceneFooterProps {
-  /** Project or artist name, small Unbounded wordmark. */
+  /** Project or artist name, small display-type wordmark. */
   name?: string
   /** Copyright year. */
   year?: string
@@ -40,8 +40,8 @@ export function SceneFooter({
   return (
     <footer className={cn("border-t border-border bg-background", className)}>
       <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-4 px-6 py-8 md:px-12">
-        <p className="font-[Sora] text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase">
-          <span className="font-[Unbounded] text-foreground">{name}</span>
+        <p className="font-(family-name:--font-body) text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase">
+          <span className="font-(family-name:--font-display) text-foreground">{name}</span>
           <span className="ml-3">© {year}</span>
           <span className="ml-3">— {microcopy}</span>
         </p>
@@ -50,7 +50,7 @@ export function SceneFooter({
             <a
               key={link.label}
               href={link.href}
-              className="font-[Sora] text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase underline-offset-4 transition-colors duration-200 hover:text-foreground hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              className="font-(family-name:--font-body) text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase underline-offset-4 transition-colors duration-200 hover:text-foreground hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
             >
               {link.label}
             </a>

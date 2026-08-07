@@ -6,8 +6,8 @@
  * INDUSTRY FIT: immersive. AVOID FOR: every other industry (motion budgets forbid it).
  * PAIRS WITH: webgl-hero-gradient.tsx, horizontal-gallery.tsx, manifesto-statement.tsx
  * DEPS: /lib/utils
- * NOTE: Unbounded (display) and Sora (body) come from the Google Fonts @import declared in
- *       ../DIRECTION.md. Reduced motion renders every scene as a normal stacked static
+ * NOTE: Display/body fonts come from the commitment tokens --font-display/--font-body
+ *       (each project declares its own fonts + Google Fonts import — see ../DIRECTION.md). Reduced motion renders every scene as a normal stacked static
  *       section — same content, zero pinning, zero motion.
  */
 "use client"
@@ -17,9 +17,9 @@ import { useEffect, useRef, useState, type ReactNode } from "react"
 import { cn } from "@/lib/utils"
 
 export interface StoryScene {
-  /** Scene title, Unbounded display type. */
+  /** Scene title, display type. */
   title: string
-  /** One Sora line — this direction speaks in headlines, keep it short. */
+  /** One body-font line — this direction speaks in headlines, keep it short. */
   line: string
   /** Optional visual slot (e.g. a full-bleed darkened image). Falls back to a styled frame. */
   visual?: ReactNode
@@ -132,13 +132,13 @@ export function ScrollStory({ scenes = DEFAULT_SCENES, className }: ScrollStoryP
   const sceneContent = (scene: StoryScene, index: number) => (
     <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-10 px-6 md:grid-cols-2 md:gap-16 md:px-12">
       <div>
-        <p className="font-[Sora] text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase">
+        <p className="font-(family-name:--font-body) text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase">
           Scene {String(index + 1).padStart(2, "0")}
         </p>
-        <h2 className="mt-5 font-[Unbounded] text-[36px] leading-[1.0] font-extrabold tracking-tight text-foreground md:text-[54px] lg:text-[81px]">
+        <h2 className="mt-5 font-(family-name:--font-display) text-[36px] leading-[1.0] font-extrabold tracking-tight text-foreground md:text-[54px] lg:text-[81px]">
           {scene.title}
         </h2>
-        <p className="mt-6 max-w-prose font-[Sora] text-base leading-relaxed text-muted-foreground md:text-lg">
+        <p className="mt-6 max-w-prose font-(family-name:--font-body) text-base leading-relaxed text-muted-foreground md:text-lg">
           {scene.line}
         </p>
       </div>
@@ -150,7 +150,7 @@ export function ScrollStory({ scenes = DEFAULT_SCENES, className }: ScrollStoryP
           />
         )}
         {scene.visualCaption ? (
-          <p className="mt-3 font-[Sora] text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase">
+          <p className="mt-3 font-(family-name:--font-body) text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase">
             {scene.visualCaption}
           </p>
         ) : null}
@@ -200,7 +200,7 @@ export function ScrollStory({ scenes = DEFAULT_SCENES, className }: ScrollStoryP
             <span
               key={scene.title}
               className={cn(
-                "font-[Sora] text-xs font-semibold tracking-[0.2em] uppercase transition-colors duration-500",
+                "font-(family-name:--font-body) text-xs font-semibold tracking-[0.2em] uppercase transition-colors duration-500",
                 index === activeIndex ? "text-foreground" : "text-muted-foreground/50"
               )}
             >

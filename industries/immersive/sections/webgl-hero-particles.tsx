@@ -6,9 +6,11 @@
  * INDUSTRY FIT: immersive. AVOID FOR: every other industry (motion budgets forbid it).
  * PAIRS WITH: scroll-story.tsx, type-wall.tsx, smooth-scroll-provider.tsx, preloader.tsx
  * DEPS: /primitives/button, /lib/utils, three
- * NOTE: Unbounded (display) and Sora (body) come from the Google Fonts @import declared in
- *       ../DIRECTION.md. Reduced motion / no WebGL renders the designed static frame
- *       (gradient + dot grid echoing the particles) — never a blank hole.
+ * NOTE: Particle colors come from the page's Commitment Protocol tokens (--foreground /
+ *       --primary), read at mount and fed to the shader — this atmosphere renders in ANY
+ *       committed palette. Fonts come from the commitment's --font-display/--font-body.
+ *       Reduced motion / no WebGL renders the designed static frame (token-driven,
+ *       gradient + dot grid echoing the particles) — never a blank hole.
  */
 "use client"
 
@@ -52,6 +54,8 @@ void main() {
 const FRAGMENT_SHADER = /* glsl */ `
 precision highp float;
 
+uniform vec3 uBase;   // --foreground: the quiet majority of particles
+uniform vec3 uSignal; // --primary: the sparse accented minority
 varying float vTint;
 
 void main() {
@@ -60,24 +64,69 @@ void main() {
   float alpha = smoothstep(0.5, 0.06, r);
   if (alpha < 0.01) discard;
 
-  // DIRECTION.md palette, violet-magenta-black family only:
-  // bone ~ --foreground (oklch 0.96 0.005 90), hotMagenta ~ --primary (oklch 0.62 0.26 350).
-  vec3 bone = vec3(0.95, 0.94, 0.89);
-  vec3 hotMagenta = vec3(0.83, 0.12, 0.47);
-  vec3 color = mix(bone, hotMagenta, vTint);
+  // Commitment tokens, resolved from the page at mount.
+  vec3 color = mix(uBase, uSignal, vTint);
 
   gl_FragColor = vec4(color, alpha * 0.85);
 }
 `
+
+/**
+ * Resolve any CSS color string (commitment tokens are oklch() strings) to a THREE.Color:
+ * a hidden probe element lets the browser resolve the syntax, read back via
+ * getComputedStyle as rgb(). Engines that serialize oklch() verbatim fall through to a
+ * 1x1 canvas pixel readback.
+ */
+function resolveCssColor(value: string, fallback: THREE.Color): THREE.Color {
+  const raw = value.trim()
+  if (!raw) return fallback.clone()
+  const probe = document.createElement("span")
+  probe.style.color = raw
+  probe.style.display = "none"
+  document.body.appendChild(probe)
+  const resolved = getComputedStyle(probe).color
+  document.body.removeChild(probe)
+  const rgb = resolved.match(/rgba?\(([^)]+)\)/)
+  if (rgb) {
+    const parts = rgb[1].split(/[\s,/]+/).map(Number)
+    if (parts.length >= 3 && parts.slice(0, 3).every((c) => !Number.isNaN(c))) {
+      return new THREE.Color(parts[0] / 255, parts[1] / 255, parts[2] / 255)
+    }
+  }
+  const canvas = document.createElement("canvas")
+  canvas.width = 1
+  canvas.height = 1
+  const ctx = canvas.getContext("2d")
+  if (!ctx) return fallback.clone()
+  ctx.fillStyle = raw
+  ctx.fillRect(0, 0, 1, 1)
+  const d = ctx.getImageData(0, 0, 1, 1).data
+  return new THREE.Color(d[0] / 255, d[1] / 255, d[2] / 255)
+}
+
+/** Read a commitment token off the mounted subtree (inherits scoped overrides too). */
+function readToken(
+  el: HTMLElement,
+  token: string,
+  override: string | undefined,
+  fallback: string
+): THREE.Color {
+  const fb = new THREE.Color(fallback)
+  if (override) return resolveCssColor(override, fb)
+  return resolveCssColor(getComputedStyle(el).getPropertyValue(token), fb)
+}
 
 export interface WebglHeroParticlesProps {
   /** Small film-credit caption above the title. */
   label?: string
   /** Scene title, one array entry per deliberate line break. */
   titleLines?: string[]
-  /** Sora one-liner under the title. Omit to hide. */
+  /** Body-font one-liner under the title. Omit to hide. */
   subline?: string
   cta?: { label: string; href: string }
+  /** Override the commitment tokens (CSS color strings) if the atmosphere needs its own grade. */
+  baseColor?: string
+  signalColor?: string
   className?: string
 }
 
@@ -86,6 +135,8 @@ export function WebglHeroParticles({
   titleLines = ["SIGNAL", "BLOOM", "LIVE"],
   subline = "Fourteen cities. One album, played front to back in the dark.",
   cta = { label: "Get tour tickets", href: "#tour" },
+  baseColor,
+  signalColor,
   className,
 }: WebglHeroParticlesProps) {
   const mountRef = useRef<HTMLDivElement>(null)
@@ -124,7 +175,7 @@ export function WebglHeroParticles({
       positions[i * 3 + 2] = (Math.random() - 0.5) * 6
       scales[i] = 0.3 + Math.random() * 0.7
       phases[i] = Math.random() * Math.PI * 2
-      // Mostly bone dust; roughly one in eight particles carries the magenta signal.
+      // Mostly bone dust; roughly one in eight particles carries the signal color.
       tints[i] = Math.random() < 0.125 ? 1 : 0
     }
     const geometry = new THREE.BufferGeometry()
@@ -137,6 +188,9 @@ export function WebglHeroParticles({
       uTime: { value: 0 },
       uPointer: { value: new THREE.Vector2(0, 0) },
       uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
+      // The commitment's palette, resolved from the page tokens at mount.
+      uBase: { value: readToken(mount, "--foreground", baseColor, "#eaeaea") },
+      uSignal: { value: readToken(mount, "--primary", signalColor, "#8a8a8f") },
     }
     const material = new THREE.ShaderMaterial({
       vertexShader: VERTEX_SHADER,
@@ -221,7 +275,7 @@ export function WebglHeroParticles({
       renderer.forceContextLoss()
       mount.removeChild(canvas)
     }
-  }, [])
+  }, [baseColor, signalColor])
 
   return (
     <section
@@ -249,10 +303,10 @@ export function WebglHeroParticles({
 
       {/* Type is HTML over the canvas — selectable, accessible, never rendered in WebGL. */}
       <div className="relative z-10 flex h-full flex-col justify-end px-6 pb-16 md:px-12 md:pb-20">
-        <p className="font-[Sora] text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase">
+        <p className="font-(family-name:--font-body) text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase">
           {label}
         </p>
-        <h1 className="mt-6 font-[Unbounded] text-[54px] leading-[0.95] font-extrabold tracking-tight text-foreground md:text-[81px] lg:text-[121px]">
+        <h1 className="mt-6 font-(family-name:--font-display) text-[54px] leading-[0.95] font-extrabold tracking-tight text-foreground md:text-[81px] lg:text-[121px]">
           {titleLines.map((line) => (
             <span key={line} className="block">
               {line}
@@ -260,7 +314,7 @@ export function WebglHeroParticles({
           ))}
         </h1>
         {subline ? (
-          <p className="mt-6 max-w-prose font-[Sora] text-base text-muted-foreground md:text-lg">
+          <p className="mt-6 max-w-prose font-(family-name:--font-body) text-base text-muted-foreground md:text-lg">
             {subline}
           </p>
         ) : null}

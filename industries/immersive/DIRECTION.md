@@ -13,8 +13,10 @@ MOOD: <three adjectives drawn from the subject — not "cinematic, singular, unh
 STAGE + SIGNAL: <the dominant field color and the ONE accent — pulled from the subject's world.
   A scorched-earth RPG might be ash charcoal + ember orange. A reef documentary might be
   abyss blue + bioluminescent green. Light stages are allowed; voids are not mandatory.>
-TYPE: <display + body — any Google Fonts pairing that serves the mood; state the import.
-  A brutal condensed face, an elegant serif, a mono — choose like a title designer would.>
+TYPE: <display + body — any Google Fonts pairing that serves the mood; state the import AND
+  declare them as --font-display / --font-body in the token block (immersive components
+  render type through those tokens). A brutal condensed face, an elegant serif, a mono —
+  choose like a title designer would.>
 ATMOSPHERE: <ONE of: gradient, particles, terrain, key-art, wireframe — matched to the subject>
 MOTIF: <ONE recurring signature: custom cursor OR magnetic buttons OR a scroll-progress line...>
 ```

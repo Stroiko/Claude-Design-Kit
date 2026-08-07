@@ -7,8 +7,8 @@
  * INDUSTRY FIT: immersive. AVOID FOR: every other industry (motion budgets forbid it).
  * PAIRS WITH: webgl-hero-gradient.tsx, webgl-hero-particles.tsx, smooth-scroll-provider.tsx
  * DEPS: /lib/utils
- * NOTE: Unbounded (display) and Sora (body) come from the Google Fonts @import declared in
- *       ../DIRECTION.md. Reduced motion dismisses instantly — no percentage theater.
+ * NOTE: Display/body fonts come from the commitment tokens --font-display/--font-body
+ *       (each project declares its own fonts + Google Fonts import — see ../DIRECTION.md). Reduced motion dismisses instantly — no percentage theater.
  */
 "use client"
 
@@ -119,20 +119,20 @@ export function Preloader({
       <span className="sr-only">Loading {label}</span>
       <div aria-hidden="true" className="flex items-end justify-between p-6 md:p-10">
         <div>
-          <p className="font-[Sora] text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase">
+          <p className="font-(family-name:--font-body) text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase">
             {label}
           </p>
           {sublabel ? (
-            <p className="mt-2 font-[Sora] text-xs font-semibold tracking-[0.2em] text-muted-foreground/60 uppercase">
+            <p className="mt-2 font-(family-name:--font-body) text-xs font-semibold tracking-[0.2em] text-muted-foreground/60 uppercase">
               {sublabel}
             </p>
           ) : null}
         </div>
-        <p className="font-[Unbounded] text-[54px] leading-none font-extrabold tracking-tight text-foreground tabular-nums md:text-[81px]">
+        <p className="font-(family-name:--font-display) text-[54px] leading-none font-extrabold tracking-tight text-foreground tabular-nums md:text-[81px]">
           {percent}
         </p>
       </div>
-      {/* Bone progress hairline — the magenta motif is reserved (see custom-cursor.tsx). */}
+      {/* Bone progress hairline — the signal-color motif is reserved (see custom-cursor.tsx). */}
       <div aria-hidden="true" className="h-px w-full bg-border">
         <div
           className="h-full origin-left bg-foreground"

@@ -29,6 +29,10 @@
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
   --radius: 0.5rem;
+  /* Font tokens — a DIRECTION (or an Immersive commitment) overrides these with its
+     chosen faces; components reference them via font-(family-name:--font-display). */
+  --font-display: ui-sans-serif, system-ui, sans-serif;
+  --font-body: ui-sans-serif, system-ui, sans-serif;
 }
 
 .dark {

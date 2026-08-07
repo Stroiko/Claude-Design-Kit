@@ -7,8 +7,8 @@
  * INDUSTRY FIT: immersive. AVOID FOR: every other industry (motion budgets forbid it).
  * PAIRS WITH: scroll-story.tsx, manifesto-statement.tsx, credits-contact.tsx
  * DEPS: /lib/utils
- * NOTE: Unbounded (display) and Sora (body) come from the Google Fonts @import declared in
- *       ../DIRECTION.md. The kit ships no binary assets — without `src`, a bg-secondary
+ * NOTE: Display/body fonts come from the commitment tokens --font-display/--font-body
+ *       (each project declares its own fonts + Google Fonts import — see ../DIRECTION.md). The kit ships no binary assets — without `src`, a bg-secondary
  *       frame with a subtle token gradient stands in until the user provides photography.
  *       Reduced motion renders a static full-bleed image: no sticky frame, no scale.
  */
@@ -99,7 +99,7 @@ export function ImageScene({
   }, [reducedMotion])
 
   // The photograph (or stand-in), the dark scrim, and the caption — bone and muted only;
-  // the magenta signal never touches this scene (DIRECTION.md two-role rule).
+  // the signal color never touches this scene (DIRECTION.md two-role rule).
   const sceneLayers = (
     <>
       {src ? (
@@ -121,7 +121,7 @@ export function ImageScene({
   )
 
   const captionLine = caption ? (
-    <p className="absolute inset-x-0 bottom-0 z-10 px-6 pb-10 font-[Sora] text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase md:px-12">
+    <p className="absolute inset-x-0 bottom-0 z-10 px-6 pb-10 font-(family-name:--font-body) text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase md:px-12">
       {caption}
     </p>
   ) : null

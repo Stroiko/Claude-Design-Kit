@@ -1,21 +1,29 @@
 /**
  * reference-page.tsx
- * THE canonical assembly example for the immersive direction. Read this file to see how
- * the sections in ./sections snap together into one stage-black title sequence telling
- * one story: SIGNAL BLOOM, the new album by Vela Nox — eleven tracks recorded over one
- * polar winter in a disused planetarium north of Tromsø, out October 2, 2026. The same
- * track titles, the same emails (tour@velanox.live, mgmt@velanox.live, press@velanox.live),
- * everywhere. Every section receives explicit props so the copy stays consistent. Copy the
- * composition pattern, swap the data.
+ * THE canonical assembly example for the immersive direction — and ONE example commitment,
+ * not a house style. The DIRECTION.md Commitment Protocol requires inventing a bespoke
+ * palette/type/atmosphere per project; this page shows the protocol fully executed for one
+ * fictional subject. A different subject (a game, a festival, a film) must produce a
+ * DIFFERENT commitment — copy the composition pattern and the commitment MECHANISM below,
+ * never this page's colors or fonts.
  *
- * Composition rules this page demonstrates (all from ./DIRECTION.md):
+ * THE EXAMPLE COMMITMENT (declared in the <style> block inside the component):
+ *   Subject: SIGNAL BLOOM — the new album by Vela Nox, recorded over one polar winter in a
+ *            disused planetarium north of Tromsø, out October 2, 2026.
+ *   MOOD: nocturnal, astronomical, patient
+ *   STAGE + SIGNAL: stage black with a warm-violet cast + hot magenta (an aurora over a
+ *            dark dome). Declared as the token block: --background, --primary, etc.
+ *   TYPE: Unbounded (display) + Sora (body), via the Google Fonts import in the style block.
+ *   ATMOSPHERE: gradient (slow aurora drift). MOTIF: the cursor glow.
+ *
+ * Composition rules this page demonstrates (all from ./DIRECTION.md physics):
  *   1. SmoothScrollProvider wraps the entire page once, at the root — easing over native
  *      scroll, never scroll-jacking; anchors and sticky sections keep working.
- *   2. CustomCursor is the site's ONE recurring magenta motif. magnetic-button.tsx is
+ *   2. CustomCursor is the site's ONE recurring signal-color motif. magnetic-button.tsx is
  *      therefore deliberately ABSENT — a page gets the cursor OR magnetic buttons, never
  *      both, and the cursor won this site.
- *   3. Exactly ONE WebGL canvas: webgl-hero-gradient. webgl-hero-particles must never
- *      join it, and no content section below opens a second context.
+ *   3. Exactly ONE WebGL canvas: webgl-hero-gradient. Its colors resolve from the
+ *      commitment tokens at mount — declare a different token block, get a different aurora.
  *   4. Preloader is honest — this page genuinely loads a shader hero and display fonts;
  *      progress is real signals with a 2.5s hard cap.
  *   5. Every scene below the hero is DOM + rAF-lerped scroll scrub. Nothing loops except
@@ -25,19 +33,17 @@
  *   6. Reduced motion is absolute: Lenis and the cursor never mount, the preloader
  *      dismisses instantly, and every section renders its designed static fallback.
  *
- * USE WHEN: Building a full immersive site — start from this assembly, not from scratch.
+ * USE WHEN: Building a full immersive site — start from this assembly pattern, with YOUR
+ *           OWN commitment stated first.
  * INDUSTRY FIT: immersive. AVOID FOR: other industries — follow their own DIRECTION.md
  *           and sections; a normal site that wants "some animation" is not this.
  * PAIRS WITH: every file in ./sections
  * DEPS: ./sections/* (smooth-scroll-provider, custom-cursor, preloader,
  *       webgl-hero-gradient, scroll-story, type-wall, horizontal-gallery,
  *       manifesto-statement, image-scene, credits-contact, scene-footer)
- * NOTE: Unbounded (display) and Sora (body) load via the Google Fonts @import declared in
- *       ./DIRECTION.md — never import a font here. The header is a tiny inline wordmark
- *       bar (Unbounded wordmark left, three 13px uppercase tracking anchor links right)
- *       floated over the hero — an experience site, not a product navbar. image-scene
- *       ships without `src` because the kit has no binary assets; swap in the artist's
- *       photography via its src/alt props.
+ * NOTE: The header is a tiny inline wordmark bar floated over the hero — an experience
+ *       site, not a product navbar. image-scene ships without `src` because the kit has
+ *       no binary assets; swap in the artist's photography via its src/alt props.
  */
 import { SmoothScrollProvider } from "@/industries/immersive/sections/smooth-scroll-provider"
 import { CustomCursor } from "@/industries/immersive/sections/custom-cursor"
@@ -69,7 +75,7 @@ function SiteHeader() {
       <div className="flex items-center justify-between px-6 py-6 md:px-12">
         <a
           href="/"
-          className="font-[Unbounded] text-sm leading-none font-extrabold tracking-tight text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+          className="font-(family-name:--font-display) text-sm leading-none font-extrabold tracking-tight text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
         >
           VELA NOX
         </a>
@@ -78,7 +84,7 @@ function SiteHeader() {
             <a
               key={link.label}
               href={link.href}
-              className="font-[Sora] text-[13px] font-semibold tracking-[0.2em] text-muted-foreground uppercase transition-colors duration-200 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              className="font-(family-name:--font-body) text-[13px] font-semibold tracking-[0.2em] text-muted-foreground uppercase transition-colors duration-200 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
             >
               {link.label}
             </a>
@@ -93,10 +99,42 @@ function SiteHeader() {
 /* The page                                                           */
 /* ------------------------------------------------------------------ */
 
+/**
+ * The example commitment, applied. Every immersive page declares its invented palette and
+ * fonts exactly like this — a token block + font import — and every kit component
+ * (including the WebGL atmosphere) re-skins to it automatically. THIS is what you replace
+ * per project; the assembly below is what you keep.
+ */
+const COMMITMENT_CSS = `
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Sora:wght@400;600&display=swap');
+:root {
+  --background: oklch(0.11 0.005 300);
+  --foreground: oklch(0.96 0.005 90);
+  --card: oklch(0.15 0.008 300);
+  --card-foreground: oklch(0.96 0.005 90);
+  --primary: oklch(0.62 0.26 350);
+  --primary-foreground: oklch(0.11 0.005 300);
+  --secondary: oklch(0.2 0.01 300);
+  --secondary-foreground: oklch(0.96 0.005 90);
+  --muted: oklch(0.18 0.008 300);
+  --muted-foreground: oklch(0.62 0.01 300);
+  --accent: oklch(0.25 0.03 300);
+  --accent-foreground: oklch(0.96 0.005 90);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.62 0.26 350);
+  --radius: 0rem;
+  --font-display: "Unbounded", ui-sans-serif, sans-serif;
+  --font-body: "Sora", ui-sans-serif, sans-serif;
+}
+`
+
 export default function ReferencePage() {
   return (
     <SmoothScrollProvider>
-      {/* The cursor glow is this site's one magenta motif — magnetic-button stays out. */}
+      {/* The commitment made real: swap this block per project, keep the assembly. */}
+      <style dangerouslySetInnerHTML={{ __html: COMMITMENT_CSS }} />
+      {/* The cursor glow is this site's one signal-color motif — magnetic-button stays out. */}
       <CustomCursor>
         <div className="relative bg-background text-foreground">
           {/* Honest opening beat: this page really does load a shader and display fonts. */}

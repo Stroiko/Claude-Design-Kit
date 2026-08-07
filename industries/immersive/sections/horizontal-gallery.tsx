@@ -5,8 +5,8 @@
  * INDUSTRY FIT: immersive. AVOID FOR: every other industry (motion budgets forbid it).
  * PAIRS WITH: scroll-story.tsx, type-wall.tsx, manifesto-statement.tsx
  * DEPS: /lib/utils
- * NOTE: Unbounded (display) and Sora (body) come from the Google Fonts @import declared in
- *       ../DIRECTION.md. Reduced motion renders a plain overflow-x scroll strip — same
+ * NOTE: Display/body fonts come from the commitment tokens --font-display/--font-body
+ *       (each project declares its own fonts + Google Fonts import — see ../DIRECTION.md). Reduced motion renders a plain overflow-x scroll strip — same
  *       content, native scrolling, keyboard reachable.
  */
 "use client"
@@ -16,7 +16,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react"
 import { cn } from "@/lib/utils"
 
 export interface GalleryItem {
-  /** Item title, Unbounded. */
+  /** Item title, display type. */
   caption: string
   /** Film-credit meta line under the caption (duration, role, city…). */
   meta?: string
@@ -120,10 +120,10 @@ export function HorizontalGallery({
         />
       )}
       <figcaption className="mt-4 flex items-baseline justify-between gap-4">
-        <span className="font-[Unbounded] text-lg font-semibold tracking-tight text-foreground md:text-2xl">
+        <span className="font-(family-name:--font-display) text-lg font-semibold tracking-tight text-foreground md:text-2xl">
           {item.caption}
         </span>
-        <span className="font-[Sora] text-xs font-semibold tracking-[0.2em] whitespace-nowrap text-muted-foreground uppercase">
+        <span className="font-(family-name:--font-body) text-xs font-semibold tracking-[0.2em] whitespace-nowrap text-muted-foreground uppercase">
           {item.meta ?? String(index + 1).padStart(2, "0")}
         </span>
       </figcaption>
@@ -134,7 +134,7 @@ export function HorizontalGallery({
   if (reducedMotion) {
     return (
       <section className={cn("bg-background py-24 md:py-32", className)}>
-        <p className="px-6 font-[Sora] text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase md:px-12">
+        <p className="px-6 font-(family-name:--font-body) text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase md:px-12">
           {label}
         </p>
         <div
@@ -156,7 +156,7 @@ export function HorizontalGallery({
       className={cn("relative bg-background", className)}
     >
       <div className="sticky top-0 flex h-svh flex-col justify-center overflow-hidden">
-        <p className="px-6 font-[Sora] text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase md:px-12">
+        <p className="px-6 font-(family-name:--font-body) text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase md:px-12">
           {label}
         </p>
         <div
