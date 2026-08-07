@@ -18,6 +18,7 @@
  *       the canvas, so reduced motion / no WebGL / slow loads show the undistorted art
  *       (with alt text) — never a blank hole. No `src`: a static token-gradient frame.
  *       The loaded texture is disposed in teardown.
+ *       composition prop: bottom-left | centered | right-rail | top-editorial per the commitment.
  */
 "use client"
 
@@ -134,6 +135,17 @@ function readToken(
   return resolveCssColor(getComputedStyle(el).getPropertyValue(token), fb)
 }
 
+/**
+ * HERO COMPOSITION (DIRECTION.md Step 2) — overlay container classes per the commitment's
+ * forced choice. Only placement/alignment change; the content semantics never do.
+ */
+const OVERLAY_CLASSES = {
+  "bottom-left": "justify-end px-6 pb-16 md:px-12 md:pb-20",
+  centered: "items-center justify-center px-6 text-center md:px-12",
+  "right-rail": "items-end justify-center px-6 md:px-12",
+  "top-editorial": "justify-between px-6 pt-28 pb-16 md:px-12 md:pt-32 md:pb-20",
+} as const
+
 export interface WebglHeroKeyartProps {
   /** User-provided key art URL. Omit to render the static token-gradient frame
    *  (and to skip creating a WebGL context entirely). */
@@ -147,6 +159,8 @@ export interface WebglHeroKeyartProps {
   /** One-liner under the title. Omit to hide. */
   subline?: string
   cta?: { label: string; href: string }
+  /** Overlay composition — one of the commitment's forced choices (see DIRECTION.md Step 2). */
+  composition?: "bottom-left" | "centered" | "right-rail" | "top-editorial"
   /** CSS color string overriding the --background stage token for the vignette. */
   stageColor?: string
   className?: string
@@ -161,6 +175,7 @@ export function WebglHeroKeyart({
   titleLines = ["THE HOLLOW", "SUN"],
   subline = "Shot on 16mm across three winters in the Faroes. In theaters this February.",
   cta = { label: "Watch the trailer", href: "#trailer" },
+  composition = "bottom-left",
   stageColor,
   className,
   children,
@@ -311,6 +326,33 @@ export function WebglHeroKeyart({
     }
   }, [src, stageColor])
 
+  // Label / title / subline / CTA — identical semantics in every composition; only the
+  // container (OVERLAY_CLASSES) and the top-editorial split below change placement.
+  const overlayContent = (
+    <>
+      <p className="text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase">
+        {label}
+      </p>
+      <h1 className="mt-6 text-[54px] leading-[0.95] font-extrabold tracking-tight text-foreground md:text-[81px] lg:text-[121px]">
+        {titleLines.map((line) => (
+          <span key={line} className="block">
+            {line}
+          </span>
+        ))}
+      </h1>
+      {subline ? (
+        <p className="mt-6 max-w-prose text-base text-muted-foreground md:text-lg">
+          {subline}
+        </p>
+      ) : null}
+      <div className="mt-10">
+        <Button asChild size="lg" className="rounded-none px-8 uppercase tracking-[0.15em]">
+          <a href={cta.href}>{cta.label}</a>
+        </Button>
+      </div>
+    </>
+  )
+
   return (
     <section
       className={cn(
@@ -335,38 +377,73 @@ export function WebglHeroKeyart({
           the <img>, so hidden from assistive tech. */}
       <div ref={mountRef} aria-hidden="true" className="absolute inset-0" />
 
-      {/* Bottom scrim so the HTML type always reads over the art. */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-background/90 via-background/40 to-transparent"
-      />
+      {/* Scrim shaped per composition so the HTML type always reads over the art. */}
+      {composition === "bottom-left" ? (
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-background/90 via-background/40 to-transparent"
+        />
+      ) : null}
+      {composition === "centered" ? (
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 [background:radial-gradient(ellipse_75%_65%_at_50%_50%,color-mix(in_srgb,var(--color-background)_70%,transparent),transparent)]"
+        />
+      ) : null}
+      {composition === "right-rail" ? (
+        <div
+          aria-hidden="true"
+          className="absolute inset-y-0 right-0 w-full bg-gradient-to-l from-background/90 via-background/40 to-transparent md:w-2/3"
+        />
+      ) : null}
+      {composition === "top-editorial" ? (
+        <>
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 top-0 h-2/5 bg-gradient-to-b from-background/70 via-background/25 to-transparent"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background/70 via-background/25 to-transparent"
+          />
+        </>
+      ) : null}
 
       {/* Type is HTML over the canvas — selectable, accessible, never rendered in WebGL. */}
-      <div className="relative z-10 flex h-full flex-col justify-end px-6 pb-16 md:px-12 md:pb-20">
-        {children ?? (
-          <>
-            <p className="text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase">
-              {label}
-            </p>
-            <h1 className="mt-6 text-[54px] leading-[0.95] font-extrabold tracking-tight text-foreground md:text-[81px] lg:text-[121px]">
-              {titleLines.map((line) => (
-                <span key={line} className="block">
-                  {line}
-                </span>
-              ))}
-            </h1>
-            {subline ? (
-              <p className="mt-6 max-w-prose text-base text-muted-foreground md:text-lg">
-                {subline}
-              </p>
-            ) : null}
-            <div className="mt-10">
-              <Button asChild size="lg" className="rounded-none px-8 uppercase tracking-[0.15em]">
-                <a href={cta.href}>{cta.label}</a>
-              </Button>
-            </div>
-          </>
-        )}
+      <div className={cn("relative z-10 flex h-full flex-col", OVERLAY_CLASSES[composition])}>
+        {children ??
+          (composition === "top-editorial" ? (
+            <>
+              <div>
+                <p className="text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase">
+                  {label}
+                </p>
+                <h1 className="mt-6 text-[54px] leading-[0.95] font-extrabold tracking-tight text-foreground md:text-[81px] lg:text-[121px]">
+                  {titleLines.map((line) => (
+                    <span key={line} className="block">
+                      {line}
+                    </span>
+                  ))}
+                </h1>
+              </div>
+              <div className="flex flex-col items-start gap-6 md:flex-row md:items-end md:justify-between">
+                {subline ? (
+                  <p className="max-w-prose text-base text-muted-foreground md:text-lg">
+                    {subline}
+                  </p>
+                ) : null}
+                <div className="shrink-0">
+                  <Button asChild size="lg" className="rounded-none px-8 uppercase tracking-[0.15em]">
+                    <a href={cta.href}>{cta.label}</a>
+                  </Button>
+                </div>
+              </div>
+            </>
+          ) : composition === "right-rail" ? (
+            <div className="w-full max-w-md text-left lg:max-w-lg">{overlayContent}</div>
+          ) : (
+            overlayContent
+          ))}
       </div>
     </section>
   )

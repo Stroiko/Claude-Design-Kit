@@ -6,24 +6,37 @@ Two immersive sites should never look alike. If your commitment for a game site 
 
 ## PART 1 — THE COMMITMENT PROTOCOL
 
-Before designing anything, invent a bespoke aesthetic commitment **from the user's subject** — its world, era, material, temperature — and STATE it to the user in this shape:
+Before designing anything, invent a bespoke aesthetic commitment **from the user's subject** — its world, era, material, temperature. The protocol has three mandatory steps; skipping any of them produces the convergent sameness this direction exists to prevent.
+
+### Step 1 — Name and reject the obvious
+
+State your FIRST instinct for this subject in one line — then discard it. The first idea is almost always a model default (dark void + one neon; ink-on-paper + vermilion; synthwave grid), and defaults are what make two different projects look alike. Your commitment must beat your first idea, not be it.
+
+### Step 2 — Decide every axis explicitly
+
+Choose a pole on EACH axis — no axis may be left to habit, and the full set must fit the subject:
 
 ```
-MOOD: <three adjectives drawn from the subject — not "cinematic, singular, unhurried" every time>
-STAGE + SIGNAL: <the dominant field color and the ONE accent — pulled from the subject's world.
-  A scorched-earth RPG might be ash charcoal + ember orange. A reef documentary might be
-  abyss blue + bioluminescent green. Light stages are allowed; voids are not mandatory.>
-TYPE: <display + body — any Google Fonts pairing that serves the mood; state the import AND
-  declare them as --font-display / --font-body in the token block (immersive components
-  render type through those tokens). A brutal condensed face, an elegant serif, a mono —
-  choose like a title designer would.>
+FIRST INSTINCT (rejected): <one line — what you're deliberately not doing>
+MOOD: <three adjectives drawn from the subject>
+VALUE: <light stage | dark stage | mid/tinted stage — voids are one option, not the default>
+TEMPERATURE: <warm | cold | clashing — and where the heat sits>
+STAGE + SIGNAL: <exact colors pulled from the subject's world. A scorched-earth RPG might be
+  ash charcoal + ember orange; a reef film abyss blue + bioluminescent green.>
+TYPE CLASS: <serif | sans | slab | mono | mixed — then the actual Google Fonts pairing +
+  import, declared as --font-display / --font-body in the token block>
+DENSITY: <sparse and monumental | layered and busy | editorial columns>
+HERO COMPOSITION: <bottom-left | centered | right-rail | top-editorial — the heroes take
+  this as a prop; the same composition twice in a row is a tell that you're on autopilot>
 ATMOSPHERE: <ONE of: gradient, particles, terrain, key-art, wireframe — matched to the subject>
 MOTIF: <ONE recurring signature: custom cursor OR magnetic buttons OR a scroll-progress line...>
 ```
 
-Then declare the palette as the page's CSS variables (the same token block every industry uses — `--background`, `--foreground`, `--primary`, `--card`, `--muted`, `--border`, …) so every kit component, including the WebGL atmospheres, re-skins to it automatically. **Obey your commitment for the whole page exactly as strictly as other industries obey their fixed DIRECTION.** Coherence is the discipline; the choices are yours.
+### Step 3 — Diverge from anything already in context
 
-What the protocol does NOT constrain: palette family, light vs dark, font personality, mood. What it does require: ONE stage + ONE signal (not five accents), ONE atmosphere, ONE motif, and a commitment stated before the first component is placed.
+If ANY prior aesthetic is visible to you — an earlier project in this workspace, a previous version of this site, the SIGNAL BLOOM reference example, a design system attachment — your commitment must differ from it on at least three axes (value, temperature, type class, hero composition, atmosphere). Continuity is for revisions the user asked for; a NEW subject never inherits an old commitment. Two briefs producing the same stage color, type class, and composition is a failed protocol run, even if both pages are individually handsome.
+
+Then declare the palette as the page's CSS variables (the same token block every industry uses — `--background`, `--foreground`, `--primary`, `--card`, `--muted`, `--border`, `--font-display`, `--font-body`, …) so every kit component, including the WebGL atmospheres, re-skins to it automatically. **State the full commitment to the user, then obey it for the whole page exactly as strictly as other industries obey their fixed DIRECTION.** Coherence is the discipline; the choices are yours.
 
 ## PART 2 — THE PHYSICS (non-negotiable, identical for every commitment)
 
@@ -51,7 +64,7 @@ What the protocol does NOT constrain: palette family, light vs dark, font person
 
 ## Anti-patterns (quality floor, not taste rules)
 
-Never: a template-with-confetti (a normal landing page plus floating shapes), three competing animations in one viewport, tiny body text over busy shaders, WebGL on content sections (the one canvas is the atmosphere), identical commitments for different subjects, defaulting to dark-void-plus-purple because no one decided otherwise — *that is the absence of a commitment, not a commitment.*
+Never: a template-with-confetti (a normal landing page plus floating shapes), three competing animations in one viewport, tiny body text over busy shaders, WebGL on content sections (the one canvas is the atmosphere), identical commitments for different subjects, or landing on a model default because no one decided otherwise — dark-void-plus-neon, ink-paper-vermilion, and synthwave-grid are the three great attractors, and arriving at any of them without having rejected a first instinct is *the absence of a commitment, not a commitment.*
 
 ## Section order
 
