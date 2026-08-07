@@ -11,7 +11,7 @@ A seventh direction, **Immersive** (`/industries/immersive/`), for artistic/expe
 
 ## Decisions so far
 
-<!-- one line per closed ticket -->
+- [Immersive DIRECTION.md + scaffold + router update](https://github.com/Stroiko/Claude-Design-Kit/issues/31) — cinematic stage-black + hot magenta, Unbounded/Sora, inverted motion budget under strict physics; router gains the seventh option + motion-modifier rule; three added (commit 4596687).
 
 ## Not yet specified
 
